@@ -7,7 +7,7 @@
 
 from dataclasses import dataclass
 from enum import IntEnum, auto
-import svbcamerasdk
+from pysvb import svbcamerasdk
 
 from pysvb.errors import SVB_CAMERA_ERRORS
 from pysvb.helpers import SVB_ERROR_CODE_TO_EXC
@@ -271,7 +271,6 @@ class SVB_ID:
 
     def __init__(self, b) -> None:
         self.__b = b
-        #self.__id = b.decode("ascii", "backslashreplace").split("\x00")[0]
 
 
 @dataclass
