@@ -565,7 +565,6 @@ class PySVBCameraSDK:
             bytes: buffer data
         """
         data, err = svbcamerasdk.SVBGetVideoData(camera_id, buff_size, wait_ms)
-        print(type(data))
         self.__last_error_code = err
         return data
 
