@@ -501,7 +501,7 @@ Get the droped frames .
 drop frames happen when USB is traffic or harddisk write speed is slow
 it will reset to 0 after stop capture
 
-Paras:
+Paras:		
 int CameraID: this is get from the camera property use the API SVBGetCameraInfo
 int *piDropFrames pointer to drop frames
 

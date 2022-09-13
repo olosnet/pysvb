@@ -13,7 +13,7 @@ x86_64_arch = ['x86_64', 'x64', 'AMD64']
 x86_arch = ['i386', 'i686', 'x86']
 armv6_arch = ['armv6l', 'arm']
 armv7_arch = ['armv7l', ]
-armv8_arch = ['aarch64_be', 'armv8b', 'armv8l', 'arm64']
+armv8_arch = ['aarch64_be', 'armv8b', 'armv8l', 'arm64', 'aarch64']
 data_files = []
 
 if system == 'Linux':

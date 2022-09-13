@@ -447,7 +447,7 @@ class PySVBCameraSDK:
         self.__last_error_code = err
         return res, bool(auto != 0)
 
-    def set_control_value(self, camera_id: int, control_type: int, control_value: int, b_auto: bool) -> None:
+    def set_control_value(self, camera_id: int, control_type: SVB_CONTROL_TYPE, control_value: int, b_auto: bool) -> None:
         """Set controls property value and auto value. The camera need be opened at first.
 
         Args:
