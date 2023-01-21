@@ -77,7 +77,7 @@ SVBCameraSDKModule = Extension('pysvb.svbcamerasdk', sources=['pysvb/svbcamerasd
 
 setup(name='pysvb',
       license="MIT",
-      version='0.1',
+      version='0.2',
       description='SVBONY SDK Python Binding',
       ext_modules=[SVBCameraSDKModule, ],
       author_email='valerio.faiuolo@gmail.com',
