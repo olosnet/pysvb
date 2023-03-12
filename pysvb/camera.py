@@ -68,6 +68,7 @@ class SVB_CAMERA_MODE(IntEnum):
     SVB_MODE_TRIG_HIGH_LEVEL = auto()
     SVB_MODE_TRIG_LOW_LEVEL = auto()
 
+
 class SVB_TRIG_OUTPUT(IntEnum):
     SVB_TRIG_OUTPUT_PINA = 0  # Only Pin A output
     SVB_TRIG_OUTPUT_PINB = auto()  # Only Pin B output
@@ -98,10 +99,12 @@ class SVB_CONTROL_TYPE(IntEnum):
     """Cooler enable, 0:disable - 1:enable"""
     SVB_TARGET_TEMPERATURE = auto()
     """Target temperature, unit is 0.1C"""
-    SVB_CURRENT_TEMPERATURE = auto() 
+    SVB_CURRENT_TEMPERATURE = auto()
     """Current temperature, unit is 0.1C"""
     SVB_COOLER_POWER = auto()
     """Cooler power, range: 0-100"""
+    SVB_BAD_PIXEL_CORRECTION_ENABLE = auto()
+    """Enable or disable bad pixel correction"""
 
 # Not implemented?
 
@@ -147,6 +150,7 @@ class SVB_CAMERA_INFO:
     def __init__(self, b) -> None:
         self.__b = b
 
+
 class SVB_CAMERA_PROPERTY:
 
     @property
@@ -162,7 +166,7 @@ class SVB_CAMERA_PROPERTY:
     @property
     def IsColorCam(self) -> bool:
         """is camera color"""
-        return bool(self.__b["BayerPattern"] !=0)
+        return bool(self.__b["BayerPattern"] != 0)
 
     @property
     def BayerPattern(self) -> SVB_BAYER_PATTERN:
@@ -185,10 +189,11 @@ class SVB_CAMERA_PROPERTY:
 
     @property
     def IsTriggerCam(self) -> bool:
-        return bool(self.__b["IsTriggerCam"] !=0)
+        return bool(self.__b["IsTriggerCam"] != 0)
 
     def __init__(self, b) -> None:
         self.__b = b
+
 
 class SVB_CAMERA_PROPERTY_EX:
 
@@ -204,6 +209,7 @@ class SVB_CAMERA_PROPERTY_EX:
 
     def __init__(self, b) -> None:
         self.__b = b
+
 
 class SVB_CONTROL_CAPS:
 
@@ -293,6 +299,14 @@ class SVB_TRIGGER_OUTPUT_IO_CONF:
     pin_high: bool = False
     delay: int = 0
     duration: int = 0
+
+@dataclass
+class SVB_CAMERA_UPGRADE_STATUS:
+    """Camera firmware update status dataclass"""
+    needed: bool = False
+    "Upgrade needed"
+    min_version: str = ""
+    "Required firmware min version"""
 
 
 class PySVBCameraSDK:
@@ -579,6 +593,19 @@ class PySVBCameraSDK:
         err = svbcamerasdk.SVBWhiteBalanceOnce(camera_id)
         self.__last_error_code = err
 
+    def get_camera_firmware_version(self, camera_id, buff_size=64) -> str:
+        """Gets the camera firmware version number
+
+        Args:
+            camera_id (int): this is get from the camera info (use get_camera_info)
+            buff_size (int): buffer size, form firmware version string, which needs to be at least 64 bytes in size (default)
+        """
+
+        data, err = svbcamerasdk.SVBGetCameraFirmwareVersion(
+            camera_id, buff_size)
+        self.__last_error_code = err
+        return str(data).strip()
+
     def get_camera_support_mode(self, camera_id: int) -> SVB_SUPPORTED_MODE:
         """Get the camera supported mode, only need to call when the IsTriggerCam in the CameraInfo is true.
             The camera need be opened at first.
@@ -726,4 +753,25 @@ class PySVBCameraSDK:
             enable (bool): if True then save the parameter file automatically
         """
         err = svbcamerasdk.SVBSetAutoSaveParam(camera_id, int(enable == True))
+        self.__last_error_code = err
+
+    def is_camera_need_to_upgrade(self, camera_id: int, buff_size=64) -> SVB_CAMERA_UPGRADE_STATUS:
+        """Detect if the camera firmware needs to be upgraded
+
+        Args:
+            camera_id (int): this is get from the camera info (use get_camera_info)
+            buff_size (int): buffer size, for min firmware version string, which needs to be at least 64 bytes in size (default)
+        """
+        needed, min_version, err = svbcamerasdk.SVBIsCameraNeedToUpgrade(camera_id, buff_size)
+        self.__last_error_code = err
+        return SVB_CAMERA_UPGRADE_STATUS(bool(needed != 0), str(min_version).strip())
+    
+
+    def restore_default_param(self, camera_id: int) -> None:
+        """Restore default parameters
+
+        Args:
+            camera_id (int): this is get from the camera info (use get_camera_info)
+        """
+        err = svbcamerasdk.SVBRestoreDefaultParam(camera_id)
         self.__last_error_code = err

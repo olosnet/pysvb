@@ -328,6 +328,22 @@ static PyObject *py_SVBWhiteBalanceOnce(PyObject *self, PyObject *args)
     return Py_BuildValue("i", err);
 }
 
+static PyObject *py_SVBGetCameraFirmwareVersion(PyObject *self, PyObject *args) 
+{
+
+    int err = -1, iCameraID = err, buffSize = 0;
+
+    if (!PyArg_ParseTuple(args, "ii", &iCameraID, &buffSize))
+    {
+        return Py_BuildValue("si", "", err);
+    }
+
+    char *pCameraFirmwareVersion = malloc(buffSize * sizeof(char));
+    err = SVBGetCameraFirmwareVersion(iCameraID, pCameraFirmwareVersion);
+
+    return Py_BuildValue("si", pCameraFirmwareVersion, err);
+}
+
 static PyObject *py_SVBGetSDKVersion(PyObject *self, PyObject *args)
 {
     const char *version = SVBGetSDKVersion();
@@ -495,6 +511,35 @@ static PyObject *py_SVBSetAutoSaveParam(PyObject *self, PyObject *args)
     return Py_BuildValue("i", err);
 }
 
+static PyObject *py_SVBIsCameraNeedToUpgrade(PyObject *self, PyObject *args) 
+{
+    int err = -1, iCameraID = err, buffSize = 0;
+    SVB_BOOL needToUpgrade = 0;
+
+    if (!PyArg_ParseTuple(args, "ii", &iCameraID, &buffSize))
+    {
+        return Py_BuildValue("isi", needToUpgrade, "", err);
+    }
+
+    char *needToUpgradeMinVersion = malloc(buffSize * sizeof(char));
+    err = SVBIsCameraNeedToUpgrade(iCameraID, needToUpgrade, needToUpgradeMinVersion);
+
+    return Py_BuildValue("isi", needToUpgrade, needToUpgradeMinVersion, err);
+}
+
+static *py_SVBRestoreDefaultParam(PyObject *self, PyObject *args) 
+{
+    
+    int err = -1, iCameraID = err;
+
+    if (PyArg_ParseTuple(args, "i", &iCameraID))
+    {
+        err = SVBRestoreDefaultParam(iCameraID);
+    }
+
+    return Py_BuildValue("i", err);
+}
+
 /*
  * This tells Python what methods this module has.
  * See the Python-C API for more information.
@@ -557,6 +602,9 @@ static PyMethodDef SVBCameraSdkMethods[] = {
     {"SVBWhiteBalanceOnce",
      py_SVBWhiteBalanceOnce,
      METH_VARARGS, NULL},
+    {"SVBGetCameraFirmwareVersion",
+     py_SVBGetCameraFirmwareVersion,
+     METH_VARARGS, NULL},
     {"SVBGetSDKVersion",
      py_SVBGetSDKVersion,
      METH_NOARGS, NULL},
@@ -592,6 +640,12 @@ static PyMethodDef SVBCameraSdkMethods[] = {
      METH_VARARGS, NULL},
     {"SVBSetAutoSaveParam",
      py_SVBSetAutoSaveParam,
+     METH_VARARGS, NULL},
+    {"SVBIsCameraNeedToUpgrade",
+     py_SVBIsCameraNeedToUpgrade,
+     METH_VARARGS, NULL},
+    {"SVBRestoreDefaultParam",
+     py_SVBRestoreDefaultParam,
      METH_VARARGS, NULL},
     {NULL, NULL, 0, NULL}};
 
