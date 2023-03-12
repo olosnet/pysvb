@@ -1,0 +1,1401 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1" />
+<meta name="generator" content="pdoc 0.10.0" />
+<title>pysvb.camera API documentation</title>
+<meta name="description" content="" />
+<link rel="preload stylesheet" as="style" href="https://cdnjs.cloudflare.com/ajax/libs/10up-sanitize.css/11.0.1/sanitize.min.css" integrity="sha256-PK9q560IAAa6WVRRh76LtCaI8pjTJ2z11v0miyNNjrs=" crossorigin>
+<link rel="preload stylesheet" as="style" href="https://cdnjs.cloudflare.com/ajax/libs/10up-sanitize.css/11.0.1/typography.min.css" integrity="sha256-7l/o7C8jubJiy74VsKTidCy1yBkRtiUGbVkYBylBqUg=" crossorigin>
+<link rel="stylesheet preload" as="style" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.1.1/styles/github.min.css" crossorigin>
+<style>:root{--highlight-color:#fe9}.flex{display:flex !important}body{line-height:1.5em}#content{padding:20px}#sidebar{padding:30px;overflow:hidden}#sidebar > *:last-child{margin-bottom:2cm}.http-server-breadcrumbs{font-size:130%;margin:0 0 15px 0}#footer{font-size:.75em;padding:5px 30px;border-top:1px solid #ddd;text-align:right}#footer p{margin:0 0 0 1em;display:inline-block}#footer p:last-child{margin-right:30px}h1,h2,h3,h4,h5{font-weight:300}h1{font-size:2.5em;line-height:1.1em}h2{font-size:1.75em;margin:1em 0 .50em 0}h3{font-size:1.4em;margin:25px 0 10px 0}h4{margin:0;font-size:105%}h1:target,h2:target,h3:target,h4:target,h5:target,h6:target{background:var(--highlight-color);padding:.2em 0}a{color:#058;text-decoration:none;transition:color .3s ease-in-out}a:hover{color:#e82}.title code{font-weight:bold}h2[id^="header-"]{margin-top:2em}.ident{color:#900}pre code{background:#f8f8f8;font-size:.8em;line-height:1.4em}code{background:#f2f2f1;padding:1px 4px;overflow-wrap:break-word}h1 code{background:transparent}pre{background:#f8f8f8;border:0;border-top:1px solid #ccc;border-bottom:1px solid #ccc;margin:1em 0;padding:1ex}#http-server-module-list{display:flex;flex-flow:column}#http-server-module-list div{display:flex}#http-server-module-list dt{min-width:10%}#http-server-module-list p{margin-top:0}.toc ul,#index{list-style-type:none;margin:0;padding:0}#index code{background:transparent}#index h3{border-bottom:1px solid #ddd}#index ul{padding:0}#index h4{margin-top:.6em;font-weight:bold}@media (min-width:200ex){#index .two-column{column-count:2}}@media (min-width:300ex){#index .two-column{column-count:3}}dl{margin-bottom:2em}dl dl:last-child{margin-bottom:4em}dd{margin:0 0 1em 3em}#header-classes + dl > dd{margin-bottom:3em}dd dd{margin-left:2em}dd p{margin:10px 0}.name{background:#eee;font-weight:bold;font-size:.85em;padding:5px 10px;display:inline-block;min-width:40%}.name:hover{background:#e0e0e0}dt:target .name{background:var(--highlight-color)}.name > span:first-child{white-space:nowrap}.name.class > span:nth-child(2){margin-left:.4em}.inherited{color:#999;border-left:5px solid #eee;padding-left:1em}.inheritance em{font-style:normal;font-weight:bold}.desc h2{font-weight:400;font-size:1.25em}.desc h3{font-size:1em}.desc dt code{background:inherit}.source summary,.git-link-div{color:#666;text-align:right;font-weight:400;font-size:.8em;text-transform:uppercase}.source summary > *{white-space:nowrap;cursor:pointer}.git-link{color:inherit;margin-left:1em}.source pre{max-height:500px;overflow:auto;margin:0}.source pre code{font-size:12px;overflow:visible}.hlist{list-style:none}.hlist li{display:inline}.hlist li:after{content:',\2002'}.hlist li:last-child:after{content:none}.hlist .hlist{display:inline;padding-left:1em}img{max-width:100%}td{padding:0 .5em}.admonition{padding:.1em .5em;margin-bottom:1em}.admonition-title{font-weight:bold}.admonition.note,.admonition.info,.admonition.important{background:#aef}.admonition.todo,.admonition.versionadded,.admonition.tip,.admonition.hint{background:#dfd}.admonition.warning,.admonition.versionchanged,.admonition.deprecated{background:#fd4}.admonition.error,.admonition.danger,.admonition.caution{background:lightpink}</style>
+<style media="screen and (min-width: 700px)">@media screen and (min-width:700px){#sidebar{width:30%;height:100vh;overflow:auto;position:sticky;top:0}#content{width:70%;max-width:100ch;padding:3em 4em;border-left:1px solid #ddd}pre code{font-size:1em}.item .name{font-size:1em}main{display:flex;flex-direction:row-reverse;justify-content:flex-end}.toc ul ul,#index ul{padding-left:1.5em}.toc > ul > li{margin-top:.5em}}</style>
+<style media="print">@media print{#sidebar h1{page-break-before:always}.source{display:none}}@media print{*{background:transparent !important;color:#000 !important;box-shadow:none !important;text-shadow:none !important}a[href]:after{content:" (" attr(href) ")";font-size:90%}a[href][title]:after{content:none}abbr[title]:after{content:" (" attr(title) ")"}.ir a:after,a[href^="javascript:"]:after,a[href^="#"]:after{content:""}pre,blockquote{border:1px solid #999;page-break-inside:avoid}thead{display:table-header-group}tr,img{page-break-inside:avoid}img{max-width:100% !important}@page{margin:0.5cm}p,h2,h3{orphans:3;widows:3}h1,h2,h3,h4,h5,h6{page-break-after:avoid}}</style>
+<script defer src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.1.1/highlight.min.js" integrity="sha256-Uv3H6lx7dJmRfRvH8TH6kJD1TSK1aFcwgx+mdg3epi8=" crossorigin></script>
+<script>window.addEventListener('DOMContentLoaded', () => hljs.initHighlighting())</script>
+</head>
+<body>
+<main>
+<article id="content">
+<header>
+<h1 class="title">Module <code>pysvb.camera</code></h1>
+</header>
+<section id="section-intro">
+</section>
+<section>
+</section>
+<section>
+</section>
+<section>
+</section>
+<section>
+<h2 class="section-title" id="header-classes">Classes</h2>
+<dl>
+<dt id="pysvb.camera.PySVBCameraSDK"><code class="flex name class">
+<span>class <span class="ident">PySVBCameraSDK</span></span>
+<span>(</span><span>raise_exc=True)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Initialize class</p>
+<h2 id="args">Args</h2>
+<dl>
+<dt><strong><code>raise_exc</code></strong> :&ensp;<code>bool</code>, optional</dt>
+<dd>Enable raise of exceptions. Defaults to True.</dd>
+</dl></div>
+<h3>Instance variables</h3>
+<dl>
+<dt id="pysvb.camera.PySVBCameraSDK.last_error_code"><code class="name">var <span class="ident">last_error_code</span> : <a title="pysvb.errors.SVB_CAMERA_ERRORS" href="errors.html#pysvb.errors.SVB_CAMERA_ERRORS">SVB_CAMERA_ERRORS</a></code></dt>
+<dd>
+<div class="desc"><p>Last error code</p></div>
+</dd>
+<dt id="pysvb.camera.PySVBCameraSDK.last_error_code_str"><code class="name">var <span class="ident">last_error_code_str</span> : str</code></dt>
+<dd>
+<div class="desc"><p>Last error string</p></div>
+</dd>
+<dt id="pysvb.camera.PySVBCameraSDK.sdk_version"><code class="name">var <span class="ident">sdk_version</span> : str</code></dt>
+<dd>
+<div class="desc"><p>Get sdk version string.</p>
+<h2 id="returns">Returns</h2>
+<dl>
+<dt><code>str</code></dt>
+<dd>version string</dd>
+</dl></div>
+</dd>
+</dl>
+<h3>Methods</h3>
+<dl>
+<dt id="pysvb.camera.PySVBCameraSDK.can_pulse_guide"><code class="name flex">
+<span>def <span class="ident">can_pulse_guide</span></span>(<span>self, camera_id: int) ‑> bool</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Get whether to support pulse guide.
+The camera need be opened at first.</p>
+<h2 id="args">Args</h2>
+<dl>
+<dt><strong><code>camera_id</code></strong> :&ensp;<code>int</code></dt>
+<dd>this is get from the camera info (use get_camera_info)</dd>
+</dl>
+<h2 id="returns">Returns</h2>
+<dl>
+<dt><code>bool</code></dt>
+<dd>if True then support pulse guide</dd>
+</dl></div>
+</dd>
+<dt id="pysvb.camera.PySVBCameraSDK.close_camera"><code class="name flex">
+<span>def <span class="ident">close_camera</span></span>(<span>self, camera_id: int) ‑> None</span>
+</code></dt>
+<dd>
+<div class="desc"><p>You need to close the camera to free all the resource.</p>
+<h2 id="args">Args</h2>
+<dl>
+<dt><strong><code>camera_id</code></strong> :&ensp;<code>int</code></dt>
+<dd>this is get from the camera info (use get_camera_info)</dd>
+</dl></div>
+</dd>
+<dt id="pysvb.camera.PySVBCameraSDK.get_camera_firmware_version"><code class="name flex">
+<span>def <span class="ident">get_camera_firmware_version</span></span>(<span>self, camera_id, buff_size=64) ‑> str</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Gets the camera firmware version number</p>
+<h2 id="args">Args</h2>
+<dl>
+<dt><strong><code>camera_id</code></strong> :&ensp;<code>int</code></dt>
+<dd>this is get from the camera info (use get_camera_info)</dd>
+<dt><strong><code>buff_size</code></strong> :&ensp;<code>int</code></dt>
+<dd>buffer size, form firmware version string, which needs to be at least 64 bytes in size (default)</dd>
+</dl></div>
+</dd>
+<dt id="pysvb.camera.PySVBCameraSDK.get_camera_info"><code class="name flex">
+<span>def <span class="ident">get_camera_info</span></span>(<span>self, camera_index: int) ‑> <a title="pysvb.camera.SVB_CAMERA_INFO" href="#pysvb.camera.SVB_CAMERA_INFO">SVB_CAMERA_INFO</a></span>
+</code></dt>
+<dd>
+<div class="desc"><p>Get the information of the connected cameras, you can do this without open the camera.</p>
+<h2 id="args">Args</h2>
+<dl>
+<dt><strong><code>camera_index</code></strong> :&ensp;<code>int</code></dt>
+<dd>0 means the first connect camera, 1 means the second connect camera, etc</dd>
+</dl>
+<h2 id="returns">Returns</h2>
+<dl>
+<dt><code><a title="pysvb.camera.SVB_CAMERA_INFO" href="#pysvb.camera.SVB_CAMERA_INFO">SVB_CAMERA_INFO</a></code></dt>
+<dd>structure containing the information of camera</dd>
+</dl></div>
+</dd>
+<dt id="pysvb.camera.PySVBCameraSDK.get_camera_mode"><code class="name flex">
+<span>def <span class="ident">get_camera_mode</span></span>(<span>self, camera_id: int) ‑> <a title="pysvb.camera.SVB_CAMERA_MODE" href="#pysvb.camera.SVB_CAMERA_MODE">SVB_CAMERA_MODE</a></span>
+</code></dt>
+<dd>
+<div class="desc"><p>Get the camera current mode, only need to call when the IsTriggerCam in the CameraInfo is true
+The camera need be opened at first.</p>
+<h2 id="args">Args</h2>
+<dl>
+<dt><strong><code>camera_id</code></strong> :&ensp;<code>int</code></dt>
+<dd>this is get from the camera info (use get_camera_info)</dd>
+</dl>
+<h2 id="returns">Returns</h2>
+<dl>
+<dt><code><a title="pysvb.camera.SVB_CAMERA_MODE" href="#pysvb.camera.SVB_CAMERA_MODE">SVB_CAMERA_MODE</a></code></dt>
+<dd>the current camera mode</dd>
+</dl></div>
+</dd>
+<dt id="pysvb.camera.PySVBCameraSDK.get_camera_property"><code class="name flex">
+<span>def <span class="ident">get_camera_property</span></span>(<span>self, camera_id: int) ‑> <a title="pysvb.camera.SVB_CAMERA_PROPERTY" href="#pysvb.camera.SVB_CAMERA_PROPERTY">SVB_CAMERA_PROPERTY</a></span>
+</code></dt>
+<dd>
+<div class="desc"><p>Get the properties of the connected cameras.</p>
+<h2 id="args">Args</h2>
+<dl>
+<dt><strong><code>camera_id</code></strong> :&ensp;<code>int</code></dt>
+<dd>this is get from the camera info (use get_camera_info)</dd>
+</dl>
+<h2 id="returns">Returns</h2>
+<dl>
+<dt><code><a title="pysvb.camera.SVB_CAMERA_PROPERTY" href="#pysvb.camera.SVB_CAMERA_PROPERTY">SVB_CAMERA_PROPERTY</a></code></dt>
+<dd>structure containing the properties of camera</dd>
+</dl></div>
+</dd>
+<dt id="pysvb.camera.PySVBCameraSDK.get_camera_property_ex"><code class="name flex">
+<span>def <span class="ident">get_camera_property_ex</span></span>(<span>self, camera_id: int) ‑> <a title="pysvb.camera.SVB_CAMERA_PROPERTY_EX" href="#pysvb.camera.SVB_CAMERA_PROPERTY_EX">SVB_CAMERA_PROPERTY_EX</a></span>
+</code></dt>
+<dd>
+<div class="desc"><p>Get the extra properties of the connected cameras.</p>
+<h2 id="args">Args</h2>
+<dl>
+<dt><strong><code>camera_id</code></strong> :&ensp;<code>int</code></dt>
+<dd>this is get from the camera info (use get_camera_info)</dd>
+</dl>
+<h2 id="returns">Returns</h2>
+<dl>
+<dt><code><a title="pysvb.camera.SVB_CAMERA_PROPERTY_EX" href="#pysvb.camera.SVB_CAMERA_PROPERTY_EX">SVB_CAMERA_PROPERTY_EX</a></code></dt>
+<dd>structure containing the extra properties of camera</dd>
+</dl></div>
+</dd>
+<dt id="pysvb.camera.PySVBCameraSDK.get_camera_support_mode"><code class="name flex">
+<span>def <span class="ident">get_camera_support_mode</span></span>(<span>self, camera_id: int) ‑> <a title="pysvb.camera.SVB_SUPPORTED_MODE" href="#pysvb.camera.SVB_SUPPORTED_MODE">SVB_SUPPORTED_MODE</a></span>
+</code></dt>
+<dd>
+<div class="desc"><p>Get the camera supported mode, only need to call when the IsTriggerCam in the CameraInfo is true.
+The camera need be opened at first.</p>
+<h2 id="args">Args</h2>
+<dl>
+<dt><strong><code>camera_id</code></strong> :&ensp;<code>int</code></dt>
+<dd>this is get from the camera info (use get_camera_info)</dd>
+</dl>
+<h2 id="returns">Returns</h2>
+<dl>
+<dt><code><a title="pysvb.camera.SVB_SUPPORTED_MODE" href="#pysvb.camera.SVB_SUPPORTED_MODE">SVB_SUPPORTED_MODE</a></code></dt>
+<dd>the camera supported mode</dd>
+</dl></div>
+</dd>
+<dt id="pysvb.camera.PySVBCameraSDK.get_control_caps"><code class="name flex">
+<span>def <span class="ident">get_control_caps</span></span>(<span>self, camera_id: int, control_index: int) ‑> <a title="pysvb.camera.SVB_CONTROL_CAPS" href="#pysvb.camera.SVB_CONTROL_CAPS">SVB_CONTROL_CAPS</a></span>
+</code></dt>
+<dd>
+<div class="desc"><p>Get controls property available for this camera. The camera need be opened at first.</p>
+<h2 id="args">Args</h2>
+<dl>
+<dt><strong><code>camera_id</code></strong> :&ensp;<code>int</code></dt>
+<dd>this is get from the camera info (use get_camera_info)</dd>
+<dt><strong><code>control_index</code></strong> :&ensp;<code>int</code></dt>
+<dd>index of control, NOT control type</dd>
+</dl>
+<h2 id="returns">Returns</h2>
+<dl>
+<dt><code><a title="pysvb.camera.SVB_CONTROL_CAPS" href="#pysvb.camera.SVB_CONTROL_CAPS">SVB_CONTROL_CAPS</a></code></dt>
+<dd>structure containing the property of the control</dd>
+</dl></div>
+</dd>
+<dt id="pysvb.camera.PySVBCameraSDK.get_control_value"><code class="name flex">
+<span>def <span class="ident">get_control_value</span></span>(<span>self, camera_id: int, control_type: <a title="pysvb.camera.SVB_CONTROL_TYPE" href="#pysvb.camera.SVB_CONTROL_TYPE">SVB_CONTROL_TYPE</a>) ‑> tuple[int, bool]</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Get controls property value and auto value. Note: the value of the temperature is the float value * 10 to convert it to long type,
+control name is "Temperature" because long is the only type for control(except cooler's target temperature, because it is an integer).
+The camera need be opened at first.</p>
+<h2 id="args">Args</h2>
+<dl>
+<dt><strong><code>camera_id</code></strong> :&ensp;<code>int</code></dt>
+<dd>this is get from the camera info (use get_camera_info)</dd>
+<dt><strong><code>control_type</code></strong> :&ensp;<code><a title="pysvb.camera.SVB_CONTROL_TYPE" href="#pysvb.camera.SVB_CONTROL_TYPE">SVB_CONTROL_TYPE</a></code></dt>
+<dd>this is get from control property (use get_control_caps)</dd>
+</dl>
+<h2 id="returns">Returns</h2>
+<dl>
+<dt><code>Tuple[int, bool]</code></dt>
+<dd>property value, auto value</dd>
+</dl></div>
+</dd>
+<dt id="pysvb.camera.PySVBCameraSDK.get_dropped_frames"><code class="name flex">
+<span>def <span class="ident">get_dropped_frames</span></span>(<span>self, camera_id: int) ‑> int</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Get dropped frames number. The camera need be opened at first.
+Drop frames happen when USB is traffic or harddisk write speed is slow it will reset to 0 after stop capture.</p>
+<h2 id="args">Args</h2>
+<dl>
+<dt><strong><code>camera_id</code></strong> :&ensp;<code>int</code></dt>
+<dd>this is get from the camera info (use get_camera_info)</dd>
+</dl>
+<h2 id="returns">Returns</h2>
+<dl>
+<dt><code>int</code></dt>
+<dd>dropped frames</dd>
+</dl></div>
+</dd>
+<dt id="pysvb.camera.PySVBCameraSDK.get_num_of_connected_cameras"><code class="name flex">
+<span>def <span class="ident">get_num_of_connected_cameras</span></span>(<span>self) ‑> int</span>
+</code></dt>
+<dd>
+<div class="desc"><p>This should be the first API to be called get number of connected SVB cameras.</p>
+<h2 id="returns">Returns</h2>
+<dl>
+<dt><code>int</code></dt>
+<dd>number of connected SVB cameras. 1 means 1 camera connected.</dd>
+</dl></div>
+</dd>
+<dt id="pysvb.camera.PySVBCameraSDK.get_num_of_controls"><code class="name flex">
+<span>def <span class="ident">get_num_of_controls</span></span>(<span>self, camera_id: int) ‑> int</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Get number of controls available for this camera. The camera need be opened at first.</p>
+<h2 id="args">Args</h2>
+<dl>
+<dt><strong><code>camera_id</code></strong> :&ensp;<code>int</code></dt>
+<dd>this is get from the camera info (use get_camera_info)</dd>
+</dl>
+<h2 id="returns">Returns</h2>
+<dl>
+<dt><code>int</code></dt>
+<dd>number of controls</dd>
+</dl></div>
+</dd>
+<dt id="pysvb.camera.PySVBCameraSDK.get_output_image_type"><code class="name flex">
+<span>def <span class="ident">get_output_image_type</span></span>(<span>self, camera_id: int) ‑> <a title="pysvb.camera.SVB_IMG_TYPE" href="#pysvb.camera.SVB_IMG_TYPE">SVB_IMG_TYPE</a></span>
+</code></dt>
+<dd>
+<div class="desc"><p>Get the output image type. The camera need be opened at first.</p>
+<h2 id="args">Args</h2>
+<dl>
+<dt><strong><code>camera_id</code></strong> :&ensp;<code>int</code></dt>
+<dd>this is get from the camera info (use get_camera_info)</dd>
+</dl>
+<h2 id="returns">Returns</h2>
+<dl>
+<dt><code><a title="pysvb.camera.SVB_IMG_TYPE" href="#pysvb.camera.SVB_IMG_TYPE">SVB_IMG_TYPE</a></code></dt>
+<dd>current image type</dd>
+</dl></div>
+</dd>
+<dt id="pysvb.camera.PySVBCameraSDK.get_roi_format"><code class="name flex">
+<span>def <span class="ident">get_roi_format</span></span>(<span>self, camera_id: int) ‑> <a title="pysvb.camera.SVB_ROI_FORMAT" href="#pysvb.camera.SVB_ROI_FORMAT">SVB_ROI_FORMAT</a></span>
+</code></dt>
+<dd>
+<div class="desc"><p>Get the current ROI area setting. The camera need be opened at first.</p>
+<h2 id="args">Args</h2>
+<dl>
+<dt><strong><code>camera_id</code></strong> :&ensp;<code>int</code></dt>
+<dd>this is get from the camera info (use get_camera_info)</dd>
+</dl>
+<h2 id="returns">Returns</h2>
+<dl>
+<dt><code><a title="pysvb.camera.SVB_ROI_FORMAT" href="#pysvb.camera.SVB_ROI_FORMAT">SVB_ROI_FORMAT</a></code></dt>
+<dd>roi format paramas dataclass</dd>
+</dl></div>
+</dd>
+<dt id="pysvb.camera.PySVBCameraSDK.get_sensor_pixel_size"><code class="name flex">
+<span>def <span class="ident">get_sensor_pixel_size</span></span>(<span>self, camera_id: int) ‑> float</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Get sensor pixel size in microns.
+The camera need be opened at first.</p>
+<h2 id="args">Args</h2>
+<dl>
+<dt><strong><code>camera_id</code></strong> :&ensp;<code>int</code></dt>
+<dd>this is get from the camera info (use get_camera_info)</dd>
+</dl>
+<h2 id="returns">Returns</h2>
+<dl>
+<dt><code>float</code></dt>
+<dd>pixel size in microns</dd>
+</dl></div>
+</dd>
+<dt id="pysvb.camera.PySVBCameraSDK.get_serial_number"><code class="name flex">
+<span>def <span class="ident">get_serial_number</span></span>(<span>self, camera_id: int) ‑> <a title="pysvb.camera.SVB_ID" href="#pysvb.camera.SVB_ID">SVB_ID</a></span>
+</code></dt>
+<dd>
+<div class="desc"><p>Get a serial number from a camera. The camera need be opened at first.</p>
+<h2 id="args">Args</h2>
+<dl>
+<dt><strong><code>camera_id</code></strong> :&ensp;<code>int</code></dt>
+<dd>this is get from the camera info (use get_camera_info)</dd>
+</dl>
+<h2 id="returns">Returns</h2>
+<dl>
+<dt><code><a title="pysvb.camera.SVB_ID" href="#pysvb.camera.SVB_ID">SVB_ID</a></code></dt>
+<dd>SVB_ID structure</dd>
+</dl></div>
+</dd>
+<dt id="pysvb.camera.PySVBCameraSDK.get_trigger_output_io_conf"><code class="name flex">
+<span>def <span class="ident">get_trigger_output_io_conf</span></span>(<span>self, camera_id: int, pin: <a title="pysvb.camera.SVB_TRIG_OUTPUT" href="#pysvb.camera.SVB_TRIG_OUTPUT">SVB_TRIG_OUTPUT</a>) ‑> <a title="pysvb.camera.SVB_TRIGGER_OUTPUT_IO_CONF" href="#pysvb.camera.SVB_TRIGGER_OUTPUT_IO_CONF">SVB_TRIGGER_OUTPUT_IO_CONF</a></span>
+</code></dt>
+<dd>
+<div class="desc"><p>Get the output pin configuration, only need to call when the IsTriggerCam in the CameraInfo is true.
+The camera need be opened at first.</p>
+<h2 id="args">Args</h2>
+<dl>
+<dt><strong><code>camera_id</code></strong> :&ensp;<code>int</code></dt>
+<dd>this is get from the camera info (use get_camera_info)</dd>
+</dl>
+<p>pin (SVB_TRIG_OUTPUT) : select the pin for getting the configuration</p>
+<h2 id="returns">Returns</h2>
+<dl>
+<dt><code><a title="pysvb.camera.SVB_TRIGGER_OUTPUT_IO_CONF" href="#pysvb.camera.SVB_TRIGGER_OUTPUT_IO_CONF">SVB_TRIGGER_OUTPUT_IO_CONF</a></code></dt>
+<dd>trigger configuration dataclass</dd>
+</dl></div>
+</dd>
+<dt id="pysvb.camera.PySVBCameraSDK.get_video_data"><code class="name flex">
+<span>def <span class="ident">get_video_data</span></span>(<span>self, camera_id: int, buff_size: int, wait_ms: int) ‑> bytes</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Get data from the video buffer. The buffer is very small, you need to call this API as fast as possible,
+otherwise frame will be discarded so the best way is maintain one buffer loop and call this API in a loop.
+Please make sure the buffer size is biger enough to hold one image otherwise the this API will crash.
+This API will block and wait wait_ms to get one image the unit is ms -1 means wait forever.
+The camera need be opened at first.</p>
+<h2 id="args">Args</h2>
+<dl>
+<dt><strong><code>camera_id</code></strong> :&ensp;<code>int</code></dt>
+<dd>this is get from the camera info (use get_camera_info)</dd>
+<dt><strong><code>buff_size</code></strong> :&ensp;<code>int</code></dt>
+<dd>buffer size (bytes) to allocate (8bit mono:width<em>height, 16bit mono:width</em>height<em>2, RGB24:width</em>height*3)</dd>
+<dt><strong><code>wait_ms</code></strong> :&ensp;<code>int</code></dt>
+<dd>wait value (milliseconds), this value is recommend set to exposure*2+500ms</dd>
+</dl>
+<h2 id="returns">Returns</h2>
+<dl>
+<dt><code>bytes</code></dt>
+<dd>buffer data</dd>
+</dl></div>
+</dd>
+<dt id="pysvb.camera.PySVBCameraSDK.is_camera_need_to_upgrade"><code class="name flex">
+<span>def <span class="ident">is_camera_need_to_upgrade</span></span>(<span>self, camera_id: int, buff_size=64) ‑> <a title="pysvb.camera.SVB_CAMERA_UPGRADE_STATUS" href="#pysvb.camera.SVB_CAMERA_UPGRADE_STATUS">SVB_CAMERA_UPGRADE_STATUS</a></span>
+</code></dt>
+<dd>
+<div class="desc"><p>Detect if the camera firmware needs to be upgraded</p>
+<h2 id="args">Args</h2>
+<dl>
+<dt><strong><code>camera_id</code></strong> :&ensp;<code>int</code></dt>
+<dd>this is get from the camera info (use get_camera_info)</dd>
+<dt><strong><code>buff_size</code></strong> :&ensp;<code>int</code></dt>
+<dd>buffer size, for min firmware version string, which needs to be at least 64 bytes in size (default)</dd>
+</dl></div>
+</dd>
+<dt id="pysvb.camera.PySVBCameraSDK.open_camera"><code class="name flex">
+<span>def <span class="ident">open_camera</span></span>(<span>self, camera_id: int) ‑> None</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Open the camera before any operation to the camera, this will not affect the camera which is capturing.</p>
+<h2 id="args">Args</h2>
+<dl>
+<dt><strong><code>camera_id</code></strong> :&ensp;<code>int</code></dt>
+<dd>this is get from the camera info (use get_camera_info)</dd>
+</dl></div>
+</dd>
+<dt id="pysvb.camera.PySVBCameraSDK.pulse_guide"><code class="name flex">
+<span>def <span class="ident">pulse_guide</span></span>(<span>self, camera_id: int, direction: <a title="pysvb.camera.SVB_GUIDE_DIRECTION" href="#pysvb.camera.SVB_GUIDE_DIRECTION">SVB_GUIDE_DIRECTION</a>, duration: int) ‑> None</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Send a PulseGuide command to camera to control the telescope.
+The camera need be opened at first.</p>
+<h2 id="args">Args</h2>
+<dl>
+<dt><strong><code>camera_id</code></strong> :&ensp;<code>int</code></dt>
+<dd>this is get from the camera info (use get_camera_info)</dd>
+<dt><strong><code>direction</code></strong> :&ensp;<code><a title="pysvb.camera.SVB_GUIDE_DIRECTION" href="#pysvb.camera.SVB_GUIDE_DIRECTION">SVB_GUIDE_DIRECTION</a></code></dt>
+<dd>the direction</dd>
+<dt><strong><code>duration</code></strong> :&ensp;<code>int</code></dt>
+<dd>duration of pulse in missilseconds</dd>
+</dl></div>
+</dd>
+<dt id="pysvb.camera.PySVBCameraSDK.restore_default_param"><code class="name flex">
+<span>def <span class="ident">restore_default_param</span></span>(<span>self, camera_id: int) ‑> None</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Restore default parameters</p>
+<h2 id="args">Args</h2>
+<dl>
+<dt><strong><code>camera_id</code></strong> :&ensp;<code>int</code></dt>
+<dd>this is get from the camera info (use get_camera_info)</dd>
+</dl></div>
+</dd>
+<dt id="pysvb.camera.PySVBCameraSDK.send_soft_trigger"><code class="name flex">
+<span>def <span class="ident">send_soft_trigger</span></span>(<span>self, camera_id: int) ‑> None</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Send out a softTrigger. For edge trigger, it only need to set true which means send a
+rising trigger to start exposure. For level trigger, it need to set true first means
+start exposure, and set false means stop exposure. It only need to call when the
+IsTriggerCam in the CameraInfo is true.
+The camera need be opened at first.</p>
+<h2 id="args">Args</h2>
+<dl>
+<dt><strong><code>camera_id</code></strong> :&ensp;<code>int</code></dt>
+<dd>this is get from the camera info (use get_camera_info)</dd>
+</dl></div>
+</dd>
+<dt id="pysvb.camera.PySVBCameraSDK.set_autosave_param"><code class="name flex">
+<span>def <span class="ident">set_autosave_param</span></span>(<span>self, camera_id: int, enable: bool) ‑> None</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Whether to save the parameter file automatically</p>
+<h2 id="args">Args</h2>
+<dl>
+<dt><strong><code>camera_id</code></strong> :&ensp;<code>int</code></dt>
+<dd>this is get from the camera info (use get_camera_info)</dd>
+<dt><strong><code>enable</code></strong> :&ensp;<code>bool</code></dt>
+<dd>if True then save the parameter file automatically</dd>
+</dl></div>
+</dd>
+<dt id="pysvb.camera.PySVBCameraSDK.set_camera_mode"><code class="name flex">
+<span>def <span class="ident">set_camera_mode</span></span>(<span>self, camera_id: int, mode: <a title="pysvb.camera.SVB_CAMERA_MODE" href="#pysvb.camera.SVB_CAMERA_MODE">SVB_CAMERA_MODE</a>) ‑> None</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Set the camera mode, only need to call when the IsTriggerCam in the CameraInfo is true.
+The camera need be opened at first.</p>
+<h2 id="args">Args</h2>
+<dl>
+<dt><strong><code>camera_id</code></strong> :&ensp;<code>int</code></dt>
+<dd>this is get from the camera info (use get_camera_info)</dd>
+<dt><strong><code>mode</code></strong> :&ensp;<code><a title="pysvb.camera.SVB_CAMERA_MODE" href="#pysvb.camera.SVB_CAMERA_MODE">SVB_CAMERA_MODE</a></code></dt>
+<dd>this is get from the camera property (use get_camera_property)</dd>
+</dl></div>
+</dd>
+<dt id="pysvb.camera.PySVBCameraSDK.set_control_value"><code class="name flex">
+<span>def <span class="ident">set_control_value</span></span>(<span>self, camera_id: int, control_type: <a title="pysvb.camera.SVB_CONTROL_TYPE" href="#pysvb.camera.SVB_CONTROL_TYPE">SVB_CONTROL_TYPE</a>, control_value: int, b_auto: bool) ‑> None</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Set controls property value and auto value. The camera need be opened at first.</p>
+<h2 id="args">Args</h2>
+<dl>
+<dt><strong><code>camera_id</code></strong> :&ensp;<code>int</code></dt>
+<dd>this is get from the camera info (use get_camera_info)</dd>
+<dt><strong><code>control_type</code></strong> :&ensp;<code><a title="pysvb.camera.SVB_CONTROL_TYPE" href="#pysvb.camera.SVB_CONTROL_TYPE">SVB_CONTROL_TYPE</a></code></dt>
+<dd>this is get from control property (use get_control_caps)</dd>
+<dt><strong><code>control_value</code></strong> :&ensp;<code>int</code></dt>
+<dd>the value set to the control</dd>
+<dt><strong><code>b_auto</code></strong> :&ensp;<code>bool</code></dt>
+<dd>set the control auto</dd>
+</dl></div>
+</dd>
+<dt id="pysvb.camera.PySVBCameraSDK.set_output_image_type"><code class="name flex">
+<span>def <span class="ident">set_output_image_type</span></span>(<span>self, camera_id: int, type: <a title="pysvb.camera.SVB_IMG_TYPE" href="#pysvb.camera.SVB_IMG_TYPE">SVB_IMG_TYPE</a>) ‑> None</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Set the output image type, the value set must be the type supported by the SVBGetCameraProperty function. The camera need be opened at first.</p>
+<h2 id="args">Args</h2>
+<dl>
+<dt><strong><code>camera_id</code></strong> :&ensp;<code>int</code></dt>
+<dd>this is get from the camera info (use get_camera_info)</dd>
+<dt><strong><code>type</code></strong> :&ensp;<code><a title="pysvb.camera.SVB_IMG_TYPE" href="#pysvb.camera.SVB_IMG_TYPE">SVB_IMG_TYPE</a></code></dt>
+<dd>image type</dd>
+</dl></div>
+</dd>
+<dt id="pysvb.camera.PySVBCameraSDK.set_roi_format"><code class="name flex">
+<span>def <span class="ident">set_roi_format</span></span>(<span>self, camera_id: int, roi_format: <a title="pysvb.camera.SVB_ROI_FORMAT" href="#pysvb.camera.SVB_ROI_FORMAT">SVB_ROI_FORMAT</a>) ‑> None</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Set the ROI area before capture. You must stop capture before call it.
+The width and height is the value after binning. The camera need be opened at first.
+ie. you need to set width to 640 and height to 480 if you want to run at 640X480@BIN2
+SVB120's data size must be times of 1024 which means width*height%1024=0.</p>
+<h2 id="args">Args</h2>
+<dl>
+<dt><strong><code>camera_id</code></strong> :&ensp;<code>int</code></dt>
+<dd>this is get from the camera info (use get_camera_info)</dd>
+<dt><strong><code>roi_format</code></strong> :&ensp;<code><a title="pysvb.camera.SVB_ROI_FORMAT" href="#pysvb.camera.SVB_ROI_FORMAT">SVB_ROI_FORMAT</a></code></dt>
+<dd>roi format paramas dataclass to be set</dd>
+</dl></div>
+</dd>
+<dt id="pysvb.camera.PySVBCameraSDK.set_trigger_output_io_conf"><code class="name flex">
+<span>def <span class="ident">set_trigger_output_io_conf</span></span>(<span>self, camera_id: int, pin: <a title="pysvb.camera.SVB_TRIG_OUTPUT" href="#pysvb.camera.SVB_TRIG_OUTPUT">SVB_TRIG_OUTPUT</a>, trigger_conf: <a title="pysvb.camera.SVB_TRIGGER_OUTPUT_IO_CONF" href="#pysvb.camera.SVB_TRIGGER_OUTPUT_IO_CONF">SVB_TRIGGER_OUTPUT_IO_CONF</a>) ‑> None</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Config the output pin (A or B) of Trigger port. If duration &lt;= 0, this output pin will be closed.
+Only need to call when the IsTriggerCam in the CameraInfo is true.
+The camera need be opened at first.</p>
+<h2 id="args">Args</h2>
+<dl>
+<dt><strong><code>camera_id</code></strong> :&ensp;<code>int</code></dt>
+<dd>this is get from the camera info (use get_camera_info)</dd>
+<dt>pin (SVB_TRIG_OUTPUT) : select the pin for output</dt>
+<dt><strong><code>trigger_conf</code></strong> :&ensp;<code><a title="pysvb.camera.SVB_TRIGGER_OUTPUT_IO_CONF" href="#pysvb.camera.SVB_TRIGGER_OUTPUT_IO_CONF">SVB_TRIGGER_OUTPUT_IO_CONF</a></code></dt>
+<dd>trigger configuration dataclass</dd>
+</dl></div>
+</dd>
+<dt id="pysvb.camera.PySVBCameraSDK.start_video_capture"><code class="name flex">
+<span>def <span class="ident">start_video_capture</span></span>(<span>self, camera_id: int) ‑> None</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Start video capture, then you can get the data from get_video_data.
+The camera need be opened at first.</p>
+<h2 id="args">Args</h2>
+<dl>
+<dt><strong><code>camera_id</code></strong> :&ensp;<code>int</code></dt>
+<dd>this is get from the camera info (use get_camera_info)</dd>
+</dl></div>
+</dd>
+<dt id="pysvb.camera.PySVBCameraSDK.stop_video_capture"><code class="name flex">
+<span>def <span class="ident">stop_video_capture</span></span>(<span>self, camera_id: int)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Stop video capture</p>
+<h2 id="args">Args</h2>
+<dl>
+<dt><strong><code>camera_id</code></strong> :&ensp;<code>int</code></dt>
+<dd>this is get from the camera info (use get_camera_info)</dd>
+</dl></div>
+</dd>
+<dt id="pysvb.camera.PySVBCameraSDK.white_balance_once"><code class="name flex">
+<span>def <span class="ident">white_balance_once</span></span>(<span>self, camera_id: int) ‑> None</span>
+</code></dt>
+<dd>
+<div class="desc"><p>White balance once time. If success, please get SVB_WB_R, SVB_WB_G and SVB_WB_B values to update UI display.
+The camera need be opened at first.</p>
+<h2 id="args">Args</h2>
+<dl>
+<dt><strong><code>camera_id</code></strong> :&ensp;<code>int</code></dt>
+<dd>this is get from the camera info (use get_camera_info)</dd>
+</dl></div>
+</dd>
+</dl>
+</dd>
+<dt id="pysvb.camera.SVB_BAYER_PATTERN"><code class="flex name class">
+<span>class <span class="ident">SVB_BAYER_PATTERN</span></span>
+<span>(</span><span>value, names=None, *, module=None, qualname=None, type=None, start=1)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>An enumeration.</p></div>
+<h3>Ancestors</h3>
+<ul class="hlist">
+<li>enum.IntEnum</li>
+<li>builtins.int</li>
+<li>enum.Enum</li>
+</ul>
+<h3>Class variables</h3>
+<dl>
+<dt id="pysvb.camera.SVB_BAYER_PATTERN.SVB_BAYER_BG"><code class="name">var <span class="ident">SVB_BAYER_BG</span></code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="pysvb.camera.SVB_BAYER_PATTERN.SVB_BAYER_GB"><code class="name">var <span class="ident">SVB_BAYER_GB</span></code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="pysvb.camera.SVB_BAYER_PATTERN.SVB_BAYER_GR"><code class="name">var <span class="ident">SVB_BAYER_GR</span></code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="pysvb.camera.SVB_BAYER_PATTERN.SVB_BAYER_RG"><code class="name">var <span class="ident">SVB_BAYER_RG</span></code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+</dl>
+</dd>
+<dt id="pysvb.camera.SVB_CAMERA_INFO"><code class="flex name class">
+<span>class <span class="ident">SVB_CAMERA_INFO</span></span>
+<span>(</span><span>b)</span>
+</code></dt>
+<dd>
+<div class="desc"></div>
+<h3>Instance variables</h3>
+<dl>
+<dt id="pysvb.camera.SVB_CAMERA_INFO.CameraID"><code class="name">var <span class="ident">CameraID</span> : int</code></dt>
+<dd>
+<div class="desc"><p>Camera ID</p></div>
+</dd>
+<dt id="pysvb.camera.SVB_CAMERA_INFO.CameraSN"><code class="name">var <span class="ident">CameraSN</span> : str</code></dt>
+<dd>
+<div class="desc"><p>Camera serial number</p></div>
+</dd>
+<dt id="pysvb.camera.SVB_CAMERA_INFO.DeviceID"><code class="name">var <span class="ident">DeviceID</span> : int</code></dt>
+<dd>
+<div class="desc"><p>Camera device ID</p></div>
+</dd>
+<dt id="pysvb.camera.SVB_CAMERA_INFO.FriendlyName"><code class="name">var <span class="ident">FriendlyName</span> : str</code></dt>
+<dd>
+<div class="desc"><p>Camera friendly name</p></div>
+</dd>
+<dt id="pysvb.camera.SVB_CAMERA_INFO.PortType"><code class="name">var <span class="ident">PortType</span> : str</code></dt>
+<dd>
+<div class="desc"><p>Camera port type</p></div>
+</dd>
+</dl>
+</dd>
+<dt id="pysvb.camera.SVB_CAMERA_MODE"><code class="flex name class">
+<span>class <span class="ident">SVB_CAMERA_MODE</span></span>
+<span>(</span><span>value, names=None, *, module=None, qualname=None, type=None, start=1)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>An enumeration.</p></div>
+<h3>Ancestors</h3>
+<ul class="hlist">
+<li>enum.IntEnum</li>
+<li>builtins.int</li>
+<li>enum.Enum</li>
+</ul>
+<h3>Class variables</h3>
+<dl>
+<dt id="pysvb.camera.SVB_CAMERA_MODE.SVB_MODE_NORMAL"><code class="name">var <span class="ident">SVB_MODE_NORMAL</span></code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="pysvb.camera.SVB_CAMERA_MODE.SVB_MODE_TRIG_DOUBLE_EDGE"><code class="name">var <span class="ident">SVB_MODE_TRIG_DOUBLE_EDGE</span></code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="pysvb.camera.SVB_CAMERA_MODE.SVB_MODE_TRIG_FALL_EDGE"><code class="name">var <span class="ident">SVB_MODE_TRIG_FALL_EDGE</span></code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="pysvb.camera.SVB_CAMERA_MODE.SVB_MODE_TRIG_HIGH_LEVEL"><code class="name">var <span class="ident">SVB_MODE_TRIG_HIGH_LEVEL</span></code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="pysvb.camera.SVB_CAMERA_MODE.SVB_MODE_TRIG_LOW_LEVEL"><code class="name">var <span class="ident">SVB_MODE_TRIG_LOW_LEVEL</span></code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="pysvb.camera.SVB_CAMERA_MODE.SVB_MODE_TRIG_RISE_EDGE"><code class="name">var <span class="ident">SVB_MODE_TRIG_RISE_EDGE</span></code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="pysvb.camera.SVB_CAMERA_MODE.SVB_MODE_TRIG_SOFT"><code class="name">var <span class="ident">SVB_MODE_TRIG_SOFT</span></code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+</dl>
+</dd>
+<dt id="pysvb.camera.SVB_CAMERA_PROPERTY"><code class="flex name class">
+<span>class <span class="ident">SVB_CAMERA_PROPERTY</span></span>
+<span>(</span><span>b)</span>
+</code></dt>
+<dd>
+<div class="desc"></div>
+<h3>Instance variables</h3>
+<dl>
+<dt id="pysvb.camera.SVB_CAMERA_PROPERTY.BayerPattern"><code class="name">var <span class="ident">BayerPattern</span> : <a title="pysvb.camera.SVB_BAYER_PATTERN" href="#pysvb.camera.SVB_BAYER_PATTERN">SVB_BAYER_PATTERN</a></code></dt>
+<dd>
+<div class="desc"><p>camera bayern pattern</p></div>
+</dd>
+<dt id="pysvb.camera.SVB_CAMERA_PROPERTY.IsColorCam"><code class="name">var <span class="ident">IsColorCam</span> : bool</code></dt>
+<dd>
+<div class="desc"><p>is camera color</p></div>
+</dd>
+<dt id="pysvb.camera.SVB_CAMERA_PROPERTY.IsTriggerCam"><code class="name">var <span class="ident">IsTriggerCam</span> : bool</code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="pysvb.camera.SVB_CAMERA_PROPERTY.MaxBitDepth"><code class="name">var <span class="ident">MaxBitDepth</span> : int</code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="pysvb.camera.SVB_CAMERA_PROPERTY.MaxHeight"><code class="name">var <span class="ident">MaxHeight</span> : int</code></dt>
+<dd>
+<div class="desc"><p>the max height of the camera</p></div>
+</dd>
+<dt id="pysvb.camera.SVB_CAMERA_PROPERTY.MaxWidth"><code class="name">var <span class="ident">MaxWidth</span> : int</code></dt>
+<dd>
+<div class="desc"><p>the max width of the camera</p></div>
+</dd>
+<dt id="pysvb.camera.SVB_CAMERA_PROPERTY.SupportedBins"><code class="name">var <span class="ident">SupportedBins</span> : list[int]</code></dt>
+<dd>
+<div class="desc"><p>list of supported binning methods</p></div>
+</dd>
+<dt id="pysvb.camera.SVB_CAMERA_PROPERTY.SupportedVideoFormat"><code class="name">var <span class="ident">SupportedVideoFormat</span> : list[<a title="pysvb.camera.SVB_IMG_TYPE" href="#pysvb.camera.SVB_IMG_TYPE">SVB_IMG_TYPE</a>]</code></dt>
+<dd>
+<div class="desc"><p>list of supported video formats</p></div>
+</dd>
+</dl>
+</dd>
+<dt id="pysvb.camera.SVB_CAMERA_PROPERTY_EX"><code class="flex name class">
+<span>class <span class="ident">SVB_CAMERA_PROPERTY_EX</span></span>
+<span>(</span><span>b)</span>
+</code></dt>
+<dd>
+<div class="desc"></div>
+<h3>Instance variables</h3>
+<dl>
+<dt id="pysvb.camera.SVB_CAMERA_PROPERTY_EX.bSupportControlTemp"><code class="name">var <span class="ident">bSupportControlTemp</span> : bool</code></dt>
+<dd>
+<div class="desc"><p>Support control temp</p></div>
+</dd>
+<dt id="pysvb.camera.SVB_CAMERA_PROPERTY_EX.bSupportPulseGuide"><code class="name">var <span class="ident">bSupportPulseGuide</span> : bool</code></dt>
+<dd>
+<div class="desc"><p>Support pulse guide</p></div>
+</dd>
+</dl>
+</dd>
+<dt id="pysvb.camera.SVB_CAMERA_UPGRADE_STATUS"><code class="flex name class">
+<span>class <span class="ident">SVB_CAMERA_UPGRADE_STATUS</span></span>
+<span>(</span><span>needed: bool = False, min_version: str = '')</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Camera firmware update status dataclass</p></div>
+<h3>Class variables</h3>
+<dl>
+<dt id="pysvb.camera.SVB_CAMERA_UPGRADE_STATUS.min_version"><code class="name">var <span class="ident">min_version</span> : str</code></dt>
+<dd>
+<div class="desc"><p>Required firmware min version</p></div>
+</dd>
+<dt id="pysvb.camera.SVB_CAMERA_UPGRADE_STATUS.needed"><code class="name">var <span class="ident">needed</span> : bool</code></dt>
+<dd>
+<div class="desc"><p>Upgrade needed</p></div>
+</dd>
+</dl>
+</dd>
+<dt id="pysvb.camera.SVB_CONTROL_CAPS"><code class="flex name class">
+<span>class <span class="ident">SVB_CONTROL_CAPS</span></span>
+<span>(</span><span>b)</span>
+</code></dt>
+<dd>
+<div class="desc"></div>
+<h3>Instance variables</h3>
+<dl>
+<dt id="pysvb.camera.SVB_CONTROL_CAPS.ControlType"><code class="name">var <span class="ident">ControlType</span> : <a title="pysvb.camera.SVB_CONTROL_TYPE" href="#pysvb.camera.SVB_CONTROL_TYPE">SVB_CONTROL_TYPE</a></code></dt>
+<dd>
+<div class="desc"><p>Control type, used to get value and set value of the control</p></div>
+</dd>
+<dt id="pysvb.camera.SVB_CONTROL_CAPS.DefaultValue"><code class="name">var <span class="ident">DefaultValue</span> : int</code></dt>
+<dd>
+<div class="desc"><p>Control default value</p></div>
+</dd>
+<dt id="pysvb.camera.SVB_CONTROL_CAPS.Description"><code class="name">var <span class="ident">Description</span> : str</code></dt>
+<dd>
+<div class="desc"><p>Control description</p></div>
+</dd>
+<dt id="pysvb.camera.SVB_CONTROL_CAPS.IsAutoSupported"><code class="name">var <span class="ident">IsAutoSupported</span> : bool</code></dt>
+<dd>
+<div class="desc"><p>Support auto set</p></div>
+</dd>
+<dt id="pysvb.camera.SVB_CONTROL_CAPS.IsWritable"><code class="name">var <span class="ident">IsWritable</span> : bool</code></dt>
+<dd>
+<div class="desc"><p>Control is writable</p></div>
+</dd>
+<dt id="pysvb.camera.SVB_CONTROL_CAPS.MaxValue"><code class="name">var <span class="ident">MaxValue</span> : int</code></dt>
+<dd>
+<div class="desc"><p>Control max value</p></div>
+</dd>
+<dt id="pysvb.camera.SVB_CONTROL_CAPS.MinValue"><code class="name">var <span class="ident">MinValue</span> : int</code></dt>
+<dd>
+<div class="desc"><p>Control min value</p></div>
+</dd>
+<dt id="pysvb.camera.SVB_CONTROL_CAPS.Name"><code class="name">var <span class="ident">Name</span> : str</code></dt>
+<dd>
+<div class="desc"><p>Control name</p></div>
+</dd>
+</dl>
+</dd>
+<dt id="pysvb.camera.SVB_CONTROL_TYPE"><code class="flex name class">
+<span>class <span class="ident">SVB_CONTROL_TYPE</span></span>
+<span>(</span><span>value, names=None, *, module=None, qualname=None, type=None, start=1)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>An enumeration.</p></div>
+<h3>Ancestors</h3>
+<ul class="hlist">
+<li>enum.IntEnum</li>
+<li>builtins.int</li>
+<li>enum.Enum</li>
+</ul>
+<h3>Class variables</h3>
+<dl>
+<dt id="pysvb.camera.SVB_CONTROL_TYPE.SVB_AUTO_TARGET_BRIGHTNESS"><code class="name">var <span class="ident">SVB_AUTO_TARGET_BRIGHTNESS</span></code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="pysvb.camera.SVB_CONTROL_TYPE.SVB_BAD_PIXEL_CORRECTION_ENABLE"><code class="name">var <span class="ident">SVB_BAD_PIXEL_CORRECTION_ENABLE</span></code></dt>
+<dd>
+<div class="desc"><p>Enable or disable bad pixel correction</p></div>
+</dd>
+<dt id="pysvb.camera.SVB_CONTROL_TYPE.SVB_BLACK_LEVEL"><code class="name">var <span class="ident">SVB_BLACK_LEVEL</span></code></dt>
+<dd>
+<div class="desc"><p>Black level offset</p></div>
+</dd>
+<dt id="pysvb.camera.SVB_CONTROL_TYPE.SVB_CONTRAST"><code class="name">var <span class="ident">SVB_CONTRAST</span></code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="pysvb.camera.SVB_CONTROL_TYPE.SVB_COOLER_ENABLE"><code class="name">var <span class="ident">SVB_COOLER_ENABLE</span></code></dt>
+<dd>
+<div class="desc"><p>Cooler enable, 0:disable - 1:enable</p></div>
+</dd>
+<dt id="pysvb.camera.SVB_CONTROL_TYPE.SVB_COOLER_POWER"><code class="name">var <span class="ident">SVB_COOLER_POWER</span></code></dt>
+<dd>
+<div class="desc"><p>Cooler power, range: 0-100</p></div>
+</dd>
+<dt id="pysvb.camera.SVB_CONTROL_TYPE.SVB_CURRENT_TEMPERATURE"><code class="name">var <span class="ident">SVB_CURRENT_TEMPERATURE</span></code></dt>
+<dd>
+<div class="desc"><p>Current temperature, unit is 0.1C</p></div>
+</dd>
+<dt id="pysvb.camera.SVB_CONTROL_TYPE.SVB_EXPOSURE"><code class="name">var <span class="ident">SVB_EXPOSURE</span></code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="pysvb.camera.SVB_CONTROL_TYPE.SVB_FLIP"><code class="name">var <span class="ident">SVB_FLIP</span></code></dt>
+<dd>
+<div class="desc"><p>Reference: SVB_FLIP_STATUS</p></div>
+</dd>
+<dt id="pysvb.camera.SVB_CONTROL_TYPE.SVB_FRAME_SPEED_MODE"><code class="name">var <span class="ident">SVB_FRAME_SPEED_MODE</span></code></dt>
+<dd>
+<div class="desc"><p>Frame speed: 0:low_speed, 1:medium_speed, 2:high_speed</p></div>
+</dd>
+<dt id="pysvb.camera.SVB_CONTROL_TYPE.SVB_GAIN"><code class="name">var <span class="ident">SVB_GAIN</span></code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="pysvb.camera.SVB_CONTROL_TYPE.SVB_GAMMA"><code class="name">var <span class="ident">SVB_GAMMA</span></code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="pysvb.camera.SVB_CONTROL_TYPE.SVB_GAMMA_CONTRAST"><code class="name">var <span class="ident">SVB_GAMMA_CONTRAST</span></code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="pysvb.camera.SVB_CONTROL_TYPE.SVB_SATURATION"><code class="name">var <span class="ident">SVB_SATURATION</span></code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="pysvb.camera.SVB_CONTROL_TYPE.SVB_SHARPNESS"><code class="name">var <span class="ident">SVB_SHARPNESS</span></code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="pysvb.camera.SVB_CONTROL_TYPE.SVB_TARGET_TEMPERATURE"><code class="name">var <span class="ident">SVB_TARGET_TEMPERATURE</span></code></dt>
+<dd>
+<div class="desc"><p>Target temperature, unit is 0.1C</p></div>
+</dd>
+<dt id="pysvb.camera.SVB_CONTROL_TYPE.SVB_WB_B"><code class="name">var <span class="ident">SVB_WB_B</span></code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="pysvb.camera.SVB_CONTROL_TYPE.SVB_WB_G"><code class="name">var <span class="ident">SVB_WB_G</span></code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="pysvb.camera.SVB_CONTROL_TYPE.SVB_WB_R"><code class="name">var <span class="ident">SVB_WB_R</span></code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+</dl>
+</dd>
+<dt id="pysvb.camera.SVB_EXPOSURE_STATUS"><code class="flex name class">
+<span>class <span class="ident">SVB_EXPOSURE_STATUS</span></span>
+<span>(</span><span>value, names=None, *, module=None, qualname=None, type=None, start=1)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>An enumeration.</p></div>
+<h3>Ancestors</h3>
+<ul class="hlist">
+<li>enum.IntEnum</li>
+<li>builtins.int</li>
+<li>enum.Enum</li>
+</ul>
+<h3>Class variables</h3>
+<dl>
+<dt id="pysvb.camera.SVB_EXPOSURE_STATUS.SVB_EXP_FAILED"><code class="name">var <span class="ident">SVB_EXP_FAILED</span></code></dt>
+<dd>
+<div class="desc"><p>exposure failed, you need to start exposure again</p></div>
+</dd>
+<dt id="pysvb.camera.SVB_EXPOSURE_STATUS.SVB_EXP_IDLE"><code class="name">var <span class="ident">SVB_EXP_IDLE</span></code></dt>
+<dd>
+<div class="desc"><p>idle states, you can start exposure now</p></div>
+</dd>
+<dt id="pysvb.camera.SVB_EXPOSURE_STATUS.SVB_EXP_SUCCESS"><code class="name">var <span class="ident">SVB_EXP_SUCCESS</span></code></dt>
+<dd>
+<div class="desc"><p>exposure finished and waiting for download</p></div>
+</dd>
+<dt id="pysvb.camera.SVB_EXPOSURE_STATUS.SVB_EXP_WORKING"><code class="name">var <span class="ident">SVB_EXP_WORKING</span></code></dt>
+<dd>
+<div class="desc"><p>exposing</p></div>
+</dd>
+</dl>
+</dd>
+<dt id="pysvb.camera.SVB_FLIP_STATUS"><code class="flex name class">
+<span>class <span class="ident">SVB_FLIP_STATUS</span></span>
+<span>(</span><span>value, names=None, *, module=None, qualname=None, type=None, start=1)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>An enumeration.</p></div>
+<h3>Ancestors</h3>
+<ul class="hlist">
+<li>enum.IntEnum</li>
+<li>builtins.int</li>
+<li>enum.Enum</li>
+</ul>
+<h3>Class variables</h3>
+<dl>
+<dt id="pysvb.camera.SVB_FLIP_STATUS.SVB_FLIP_BOTH"><code class="name">var <span class="ident">SVB_FLIP_BOTH</span></code></dt>
+<dd>
+<div class="desc"><p>Both horizontal and vertical flip</p></div>
+</dd>
+<dt id="pysvb.camera.SVB_FLIP_STATUS.SVB_FLIP_HORIZ"><code class="name">var <span class="ident">SVB_FLIP_HORIZ</span></code></dt>
+<dd>
+<div class="desc"><p>Horizontal flip</p></div>
+</dd>
+<dt id="pysvb.camera.SVB_FLIP_STATUS.SVB_FLIP_NONE"><code class="name">var <span class="ident">SVB_FLIP_NONE</span></code></dt>
+<dd>
+<div class="desc"><p>Original</p></div>
+</dd>
+<dt id="pysvb.camera.SVB_FLIP_STATUS.SVB_FLIP_VERT"><code class="name">var <span class="ident">SVB_FLIP_VERT</span></code></dt>
+<dd>
+<div class="desc"><p>Verical flip</p></div>
+</dd>
+</dl>
+</dd>
+<dt id="pysvb.camera.SVB_GUIDE_DIRECTION"><code class="flex name class">
+<span>class <span class="ident">SVB_GUIDE_DIRECTION</span></span>
+<span>(</span><span>value, names=None, *, module=None, qualname=None, type=None, start=1)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>An enumeration.</p></div>
+<h3>Ancestors</h3>
+<ul class="hlist">
+<li>enum.IntEnum</li>
+<li>builtins.int</li>
+<li>enum.Enum</li>
+</ul>
+<h3>Class variables</h3>
+<dl>
+<dt id="pysvb.camera.SVB_GUIDE_DIRECTION.SVB_GUIDE_EAST"><code class="name">var <span class="ident">SVB_GUIDE_EAST</span></code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="pysvb.camera.SVB_GUIDE_DIRECTION.SVB_GUIDE_NORTH"><code class="name">var <span class="ident">SVB_GUIDE_NORTH</span></code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="pysvb.camera.SVB_GUIDE_DIRECTION.SVB_GUIDE_SOUTH"><code class="name">var <span class="ident">SVB_GUIDE_SOUTH</span></code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="pysvb.camera.SVB_GUIDE_DIRECTION.SVB_GUIDE_WEST"><code class="name">var <span class="ident">SVB_GUIDE_WEST</span></code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+</dl>
+</dd>
+<dt id="pysvb.camera.SVB_ID"><code class="flex name class">
+<span>class <span class="ident">SVB_ID</span></span>
+<span>(</span><span>b)</span>
+</code></dt>
+<dd>
+<div class="desc"></div>
+<h3>Instance variables</h3>
+<dl>
+<dt id="pysvb.camera.SVB_ID.id"><code class="name">var <span class="ident">id</span> : str</code></dt>
+<dd>
+<div class="desc"><p>Camera serial number</p></div>
+</dd>
+</dl>
+</dd>
+<dt id="pysvb.camera.SVB_IMG_TYPE"><code class="flex name class">
+<span>class <span class="ident">SVB_IMG_TYPE</span></span>
+<span>(</span><span>value, names=None, *, module=None, qualname=None, type=None, start=1)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>An enumeration.</p></div>
+<h3>Ancestors</h3>
+<ul class="hlist">
+<li>enum.IntEnum</li>
+<li>builtins.int</li>
+<li>enum.Enum</li>
+</ul>
+<h3>Class variables</h3>
+<dl>
+<dt id="pysvb.camera.SVB_IMG_TYPE.SVB_IMG_RAW10"><code class="name">var <span class="ident">SVB_IMG_RAW10</span></code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="pysvb.camera.SVB_IMG_TYPE.SVB_IMG_RAW12"><code class="name">var <span class="ident">SVB_IMG_RAW12</span></code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="pysvb.camera.SVB_IMG_TYPE.SVB_IMG_RAW14"><code class="name">var <span class="ident">SVB_IMG_RAW14</span></code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="pysvb.camera.SVB_IMG_TYPE.SVB_IMG_RAW16"><code class="name">var <span class="ident">SVB_IMG_RAW16</span></code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="pysvb.camera.SVB_IMG_TYPE.SVB_IMG_RAW8"><code class="name">var <span class="ident">SVB_IMG_RAW8</span></code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="pysvb.camera.SVB_IMG_TYPE.SVB_IMG_RGB24"><code class="name">var <span class="ident">SVB_IMG_RGB24</span></code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="pysvb.camera.SVB_IMG_TYPE.SVB_IMG_RGB32"><code class="name">var <span class="ident">SVB_IMG_RGB32</span></code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="pysvb.camera.SVB_IMG_TYPE.SVB_IMG_Y10"><code class="name">var <span class="ident">SVB_IMG_Y10</span></code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="pysvb.camera.SVB_IMG_TYPE.SVB_IMG_Y12"><code class="name">var <span class="ident">SVB_IMG_Y12</span></code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="pysvb.camera.SVB_IMG_TYPE.SVB_IMG_Y14"><code class="name">var <span class="ident">SVB_IMG_Y14</span></code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="pysvb.camera.SVB_IMG_TYPE.SVB_IMG_Y16"><code class="name">var <span class="ident">SVB_IMG_Y16</span></code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="pysvb.camera.SVB_IMG_TYPE.SVB_IMG_Y8"><code class="name">var <span class="ident">SVB_IMG_Y8</span></code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+</dl>
+</dd>
+<dt id="pysvb.camera.SVB_ROI_FORMAT"><code class="flex name class">
+<span>class <span class="ident">SVB_ROI_FORMAT</span></span>
+<span>(</span><span>start_x: int = -1, start_y: int = -1, width: int = -1, height: int = -1, bin: int = -1)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Roi format dataclass</p></div>
+<h3>Class variables</h3>
+<dl>
+<dt id="pysvb.camera.SVB_ROI_FORMAT.bin"><code class="name">var <span class="ident">bin</span> : int</code></dt>
+<dd>
+<div class="desc"><p>binning method. bin1=1, bin2=2</p></div>
+</dd>
+<dt id="pysvb.camera.SVB_ROI_FORMAT.height"><code class="name">var <span class="ident">height</span> : int</code></dt>
+<dd>
+<div class="desc"><p>the height of the ROI area. Make sure height%2 = 0 further, for USB2.0 camera SVB120, please make sure that width*height%1024=0</p></div>
+</dd>
+<dt id="pysvb.camera.SVB_ROI_FORMAT.start_x"><code class="name">var <span class="ident">start_x</span> : int</code></dt>
+<dd>
+<div class="desc"><p>roi area start X</p></div>
+</dd>
+<dt id="pysvb.camera.SVB_ROI_FORMAT.start_y"><code class="name">var <span class="ident">start_y</span> : int</code></dt>
+<dd>
+<div class="desc"><p>roi area start Y</p></div>
+</dd>
+<dt id="pysvb.camera.SVB_ROI_FORMAT.width"><code class="name">var <span class="ident">width</span> : int</code></dt>
+<dd>
+<div class="desc"><p>the width of the ROI area. Make sure width%8 = 0</p></div>
+</dd>
+</dl>
+</dd>
+<dt id="pysvb.camera.SVB_SUPPORTED_MODE"><code class="flex name class">
+<span>class <span class="ident">SVB_SUPPORTED_MODE</span></span>
+<span>(</span><span>b)</span>
+</code></dt>
+<dd>
+<div class="desc"></div>
+<h3>Instance variables</h3>
+<dl>
+<dt id="pysvb.camera.SVB_SUPPORTED_MODE.SupportedCameraMode"><code class="name">var <span class="ident">SupportedCameraMode</span> : list[<a title="pysvb.camera.SVB_CAMERA_MODE" href="#pysvb.camera.SVB_CAMERA_MODE">SVB_CAMERA_MODE</a>]</code></dt>
+<dd>
+<div class="desc"><p>This list will content with the support camera mode types</p></div>
+</dd>
+</dl>
+</dd>
+<dt id="pysvb.camera.SVB_TRIGGER_OUTPUT_IO_CONF"><code class="flex name class">
+<span>class <span class="ident">SVB_TRIGGER_OUTPUT_IO_CONF</span></span>
+<span>(</span><span>pin_high: bool = False, delay: int = 0, duration: int = 0)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>SVB_TRIGGER_OUTPUT_IO_CONF(pin_high: bool = False, delay: int = 0, duration: int = 0)</p></div>
+<h3>Class variables</h3>
+<dl>
+<dt id="pysvb.camera.SVB_TRIGGER_OUTPUT_IO_CONF.delay"><code class="name">var <span class="ident">delay</span> : int</code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="pysvb.camera.SVB_TRIGGER_OUTPUT_IO_CONF.duration"><code class="name">var <span class="ident">duration</span> : int</code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="pysvb.camera.SVB_TRIGGER_OUTPUT_IO_CONF.pin_high"><code class="name">var <span class="ident">pin_high</span> : bool</code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+</dl>
+</dd>
+<dt id="pysvb.camera.SVB_TRIG_OUTPUT"><code class="flex name class">
+<span>class <span class="ident">SVB_TRIG_OUTPUT</span></span>
+<span>(</span><span>value, names=None, *, module=None, qualname=None, type=None, start=1)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>An enumeration.</p></div>
+<h3>Ancestors</h3>
+<ul class="hlist">
+<li>enum.IntEnum</li>
+<li>builtins.int</li>
+<li>enum.Enum</li>
+</ul>
+<h3>Class variables</h3>
+<dl>
+<dt id="pysvb.camera.SVB_TRIG_OUTPUT.SVB_TRIG_OUTPUT_NONE"><code class="name">var <span class="ident">SVB_TRIG_OUTPUT_NONE</span></code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="pysvb.camera.SVB_TRIG_OUTPUT.SVB_TRIG_OUTPUT_PINA"><code class="name">var <span class="ident">SVB_TRIG_OUTPUT_PINA</span></code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="pysvb.camera.SVB_TRIG_OUTPUT.SVB_TRIG_OUTPUT_PINB"><code class="name">var <span class="ident">SVB_TRIG_OUTPUT_PINB</span></code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+</dl>
+</dd>
+</dl>
+</section>
+</article>
+<nav id="sidebar">
+<h1>Index</h1>
+<div class="toc">
+<ul></ul>
+</div>
+<ul id="index">
+<li><h3>Super-module</h3>
+<ul>
+<li><code><a title="pysvb" href="index.html">pysvb</a></code></li>
+</ul>
+</li>
+<li><h3><a href="#header-classes">Classes</a></h3>
+<ul>
+<li>
+<h4><code><a title="pysvb.camera.PySVBCameraSDK" href="#pysvb.camera.PySVBCameraSDK">PySVBCameraSDK</a></code></h4>
+<ul class="">
+<li><code><a title="pysvb.camera.PySVBCameraSDK.can_pulse_guide" href="#pysvb.camera.PySVBCameraSDK.can_pulse_guide">can_pulse_guide</a></code></li>
+<li><code><a title="pysvb.camera.PySVBCameraSDK.close_camera" href="#pysvb.camera.PySVBCameraSDK.close_camera">close_camera</a></code></li>
+<li><code><a title="pysvb.camera.PySVBCameraSDK.get_camera_firmware_version" href="#pysvb.camera.PySVBCameraSDK.get_camera_firmware_version">get_camera_firmware_version</a></code></li>
+<li><code><a title="pysvb.camera.PySVBCameraSDK.get_camera_info" href="#pysvb.camera.PySVBCameraSDK.get_camera_info">get_camera_info</a></code></li>
+<li><code><a title="pysvb.camera.PySVBCameraSDK.get_camera_mode" href="#pysvb.camera.PySVBCameraSDK.get_camera_mode">get_camera_mode</a></code></li>
+<li><code><a title="pysvb.camera.PySVBCameraSDK.get_camera_property" href="#pysvb.camera.PySVBCameraSDK.get_camera_property">get_camera_property</a></code></li>
+<li><code><a title="pysvb.camera.PySVBCameraSDK.get_camera_property_ex" href="#pysvb.camera.PySVBCameraSDK.get_camera_property_ex">get_camera_property_ex</a></code></li>
+<li><code><a title="pysvb.camera.PySVBCameraSDK.get_camera_support_mode" href="#pysvb.camera.PySVBCameraSDK.get_camera_support_mode">get_camera_support_mode</a></code></li>
+<li><code><a title="pysvb.camera.PySVBCameraSDK.get_control_caps" href="#pysvb.camera.PySVBCameraSDK.get_control_caps">get_control_caps</a></code></li>
+<li><code><a title="pysvb.camera.PySVBCameraSDK.get_control_value" href="#pysvb.camera.PySVBCameraSDK.get_control_value">get_control_value</a></code></li>
+<li><code><a title="pysvb.camera.PySVBCameraSDK.get_dropped_frames" href="#pysvb.camera.PySVBCameraSDK.get_dropped_frames">get_dropped_frames</a></code></li>
+<li><code><a title="pysvb.camera.PySVBCameraSDK.get_num_of_connected_cameras" href="#pysvb.camera.PySVBCameraSDK.get_num_of_connected_cameras">get_num_of_connected_cameras</a></code></li>
+<li><code><a title="pysvb.camera.PySVBCameraSDK.get_num_of_controls" href="#pysvb.camera.PySVBCameraSDK.get_num_of_controls">get_num_of_controls</a></code></li>
+<li><code><a title="pysvb.camera.PySVBCameraSDK.get_output_image_type" href="#pysvb.camera.PySVBCameraSDK.get_output_image_type">get_output_image_type</a></code></li>
+<li><code><a title="pysvb.camera.PySVBCameraSDK.get_roi_format" href="#pysvb.camera.PySVBCameraSDK.get_roi_format">get_roi_format</a></code></li>
+<li><code><a title="pysvb.camera.PySVBCameraSDK.get_sensor_pixel_size" href="#pysvb.camera.PySVBCameraSDK.get_sensor_pixel_size">get_sensor_pixel_size</a></code></li>
+<li><code><a title="pysvb.camera.PySVBCameraSDK.get_serial_number" href="#pysvb.camera.PySVBCameraSDK.get_serial_number">get_serial_number</a></code></li>
+<li><code><a title="pysvb.camera.PySVBCameraSDK.get_trigger_output_io_conf" href="#pysvb.camera.PySVBCameraSDK.get_trigger_output_io_conf">get_trigger_output_io_conf</a></code></li>
+<li><code><a title="pysvb.camera.PySVBCameraSDK.get_video_data" href="#pysvb.camera.PySVBCameraSDK.get_video_data">get_video_data</a></code></li>
+<li><code><a title="pysvb.camera.PySVBCameraSDK.is_camera_need_to_upgrade" href="#pysvb.camera.PySVBCameraSDK.is_camera_need_to_upgrade">is_camera_need_to_upgrade</a></code></li>
+<li><code><a title="pysvb.camera.PySVBCameraSDK.last_error_code" href="#pysvb.camera.PySVBCameraSDK.last_error_code">last_error_code</a></code></li>
+<li><code><a title="pysvb.camera.PySVBCameraSDK.last_error_code_str" href="#pysvb.camera.PySVBCameraSDK.last_error_code_str">last_error_code_str</a></code></li>
+<li><code><a title="pysvb.camera.PySVBCameraSDK.open_camera" href="#pysvb.camera.PySVBCameraSDK.open_camera">open_camera</a></code></li>
+<li><code><a title="pysvb.camera.PySVBCameraSDK.pulse_guide" href="#pysvb.camera.PySVBCameraSDK.pulse_guide">pulse_guide</a></code></li>
+<li><code><a title="pysvb.camera.PySVBCameraSDK.restore_default_param" href="#pysvb.camera.PySVBCameraSDK.restore_default_param">restore_default_param</a></code></li>
+<li><code><a title="pysvb.camera.PySVBCameraSDK.sdk_version" href="#pysvb.camera.PySVBCameraSDK.sdk_version">sdk_version</a></code></li>
+<li><code><a title="pysvb.camera.PySVBCameraSDK.send_soft_trigger" href="#pysvb.camera.PySVBCameraSDK.send_soft_trigger">send_soft_trigger</a></code></li>
+<li><code><a title="pysvb.camera.PySVBCameraSDK.set_autosave_param" href="#pysvb.camera.PySVBCameraSDK.set_autosave_param">set_autosave_param</a></code></li>
+<li><code><a title="pysvb.camera.PySVBCameraSDK.set_camera_mode" href="#pysvb.camera.PySVBCameraSDK.set_camera_mode">set_camera_mode</a></code></li>
+<li><code><a title="pysvb.camera.PySVBCameraSDK.set_control_value" href="#pysvb.camera.PySVBCameraSDK.set_control_value">set_control_value</a></code></li>
+<li><code><a title="pysvb.camera.PySVBCameraSDK.set_output_image_type" href="#pysvb.camera.PySVBCameraSDK.set_output_image_type">set_output_image_type</a></code></li>
+<li><code><a title="pysvb.camera.PySVBCameraSDK.set_roi_format" href="#pysvb.camera.PySVBCameraSDK.set_roi_format">set_roi_format</a></code></li>
+<li><code><a title="pysvb.camera.PySVBCameraSDK.set_trigger_output_io_conf" href="#pysvb.camera.PySVBCameraSDK.set_trigger_output_io_conf">set_trigger_output_io_conf</a></code></li>
+<li><code><a title="pysvb.camera.PySVBCameraSDK.start_video_capture" href="#pysvb.camera.PySVBCameraSDK.start_video_capture">start_video_capture</a></code></li>
+<li><code><a title="pysvb.camera.PySVBCameraSDK.stop_video_capture" href="#pysvb.camera.PySVBCameraSDK.stop_video_capture">stop_video_capture</a></code></li>
+<li><code><a title="pysvb.camera.PySVBCameraSDK.white_balance_once" href="#pysvb.camera.PySVBCameraSDK.white_balance_once">white_balance_once</a></code></li>
+</ul>
+</li>
+<li>
+<h4><code><a title="pysvb.camera.SVB_BAYER_PATTERN" href="#pysvb.camera.SVB_BAYER_PATTERN">SVB_BAYER_PATTERN</a></code></h4>
+<ul class="">
+<li><code><a title="pysvb.camera.SVB_BAYER_PATTERN.SVB_BAYER_BG" href="#pysvb.camera.SVB_BAYER_PATTERN.SVB_BAYER_BG">SVB_BAYER_BG</a></code></li>
+<li><code><a title="pysvb.camera.SVB_BAYER_PATTERN.SVB_BAYER_GB" href="#pysvb.camera.SVB_BAYER_PATTERN.SVB_BAYER_GB">SVB_BAYER_GB</a></code></li>
+<li><code><a title="pysvb.camera.SVB_BAYER_PATTERN.SVB_BAYER_GR" href="#pysvb.camera.SVB_BAYER_PATTERN.SVB_BAYER_GR">SVB_BAYER_GR</a></code></li>
+<li><code><a title="pysvb.camera.SVB_BAYER_PATTERN.SVB_BAYER_RG" href="#pysvb.camera.SVB_BAYER_PATTERN.SVB_BAYER_RG">SVB_BAYER_RG</a></code></li>
+</ul>
+</li>
+<li>
+<h4><code><a title="pysvb.camera.SVB_CAMERA_INFO" href="#pysvb.camera.SVB_CAMERA_INFO">SVB_CAMERA_INFO</a></code></h4>
+<ul class="">
+<li><code><a title="pysvb.camera.SVB_CAMERA_INFO.CameraID" href="#pysvb.camera.SVB_CAMERA_INFO.CameraID">CameraID</a></code></li>
+<li><code><a title="pysvb.camera.SVB_CAMERA_INFO.CameraSN" href="#pysvb.camera.SVB_CAMERA_INFO.CameraSN">CameraSN</a></code></li>
+<li><code><a title="pysvb.camera.SVB_CAMERA_INFO.DeviceID" href="#pysvb.camera.SVB_CAMERA_INFO.DeviceID">DeviceID</a></code></li>
+<li><code><a title="pysvb.camera.SVB_CAMERA_INFO.FriendlyName" href="#pysvb.camera.SVB_CAMERA_INFO.FriendlyName">FriendlyName</a></code></li>
+<li><code><a title="pysvb.camera.SVB_CAMERA_INFO.PortType" href="#pysvb.camera.SVB_CAMERA_INFO.PortType">PortType</a></code></li>
+</ul>
+</li>
+<li>
+<h4><code><a title="pysvb.camera.SVB_CAMERA_MODE" href="#pysvb.camera.SVB_CAMERA_MODE">SVB_CAMERA_MODE</a></code></h4>
+<ul class="">
+<li><code><a title="pysvb.camera.SVB_CAMERA_MODE.SVB_MODE_NORMAL" href="#pysvb.camera.SVB_CAMERA_MODE.SVB_MODE_NORMAL">SVB_MODE_NORMAL</a></code></li>
+<li><code><a title="pysvb.camera.SVB_CAMERA_MODE.SVB_MODE_TRIG_DOUBLE_EDGE" href="#pysvb.camera.SVB_CAMERA_MODE.SVB_MODE_TRIG_DOUBLE_EDGE">SVB_MODE_TRIG_DOUBLE_EDGE</a></code></li>
+<li><code><a title="pysvb.camera.SVB_CAMERA_MODE.SVB_MODE_TRIG_FALL_EDGE" href="#pysvb.camera.SVB_CAMERA_MODE.SVB_MODE_TRIG_FALL_EDGE">SVB_MODE_TRIG_FALL_EDGE</a></code></li>
+<li><code><a title="pysvb.camera.SVB_CAMERA_MODE.SVB_MODE_TRIG_HIGH_LEVEL" href="#pysvb.camera.SVB_CAMERA_MODE.SVB_MODE_TRIG_HIGH_LEVEL">SVB_MODE_TRIG_HIGH_LEVEL</a></code></li>
+<li><code><a title="pysvb.camera.SVB_CAMERA_MODE.SVB_MODE_TRIG_LOW_LEVEL" href="#pysvb.camera.SVB_CAMERA_MODE.SVB_MODE_TRIG_LOW_LEVEL">SVB_MODE_TRIG_LOW_LEVEL</a></code></li>
+<li><code><a title="pysvb.camera.SVB_CAMERA_MODE.SVB_MODE_TRIG_RISE_EDGE" href="#pysvb.camera.SVB_CAMERA_MODE.SVB_MODE_TRIG_RISE_EDGE">SVB_MODE_TRIG_RISE_EDGE</a></code></li>
+<li><code><a title="pysvb.camera.SVB_CAMERA_MODE.SVB_MODE_TRIG_SOFT" href="#pysvb.camera.SVB_CAMERA_MODE.SVB_MODE_TRIG_SOFT">SVB_MODE_TRIG_SOFT</a></code></li>
+</ul>
+</li>
+<li>
+<h4><code><a title="pysvb.camera.SVB_CAMERA_PROPERTY" href="#pysvb.camera.SVB_CAMERA_PROPERTY">SVB_CAMERA_PROPERTY</a></code></h4>
+<ul class="">
+<li><code><a title="pysvb.camera.SVB_CAMERA_PROPERTY.BayerPattern" href="#pysvb.camera.SVB_CAMERA_PROPERTY.BayerPattern">BayerPattern</a></code></li>
+<li><code><a title="pysvb.camera.SVB_CAMERA_PROPERTY.IsColorCam" href="#pysvb.camera.SVB_CAMERA_PROPERTY.IsColorCam">IsColorCam</a></code></li>
+<li><code><a title="pysvb.camera.SVB_CAMERA_PROPERTY.IsTriggerCam" href="#pysvb.camera.SVB_CAMERA_PROPERTY.IsTriggerCam">IsTriggerCam</a></code></li>
+<li><code><a title="pysvb.camera.SVB_CAMERA_PROPERTY.MaxBitDepth" href="#pysvb.camera.SVB_CAMERA_PROPERTY.MaxBitDepth">MaxBitDepth</a></code></li>
+<li><code><a title="pysvb.camera.SVB_CAMERA_PROPERTY.MaxHeight" href="#pysvb.camera.SVB_CAMERA_PROPERTY.MaxHeight">MaxHeight</a></code></li>
+<li><code><a title="pysvb.camera.SVB_CAMERA_PROPERTY.MaxWidth" href="#pysvb.camera.SVB_CAMERA_PROPERTY.MaxWidth">MaxWidth</a></code></li>
+<li><code><a title="pysvb.camera.SVB_CAMERA_PROPERTY.SupportedBins" href="#pysvb.camera.SVB_CAMERA_PROPERTY.SupportedBins">SupportedBins</a></code></li>
+<li><code><a title="pysvb.camera.SVB_CAMERA_PROPERTY.SupportedVideoFormat" href="#pysvb.camera.SVB_CAMERA_PROPERTY.SupportedVideoFormat">SupportedVideoFormat</a></code></li>
+</ul>
+</li>
+<li>
+<h4><code><a title="pysvb.camera.SVB_CAMERA_PROPERTY_EX" href="#pysvb.camera.SVB_CAMERA_PROPERTY_EX">SVB_CAMERA_PROPERTY_EX</a></code></h4>
+<ul class="">
+<li><code><a title="pysvb.camera.SVB_CAMERA_PROPERTY_EX.bSupportControlTemp" href="#pysvb.camera.SVB_CAMERA_PROPERTY_EX.bSupportControlTemp">bSupportControlTemp</a></code></li>
+<li><code><a title="pysvb.camera.SVB_CAMERA_PROPERTY_EX.bSupportPulseGuide" href="#pysvb.camera.SVB_CAMERA_PROPERTY_EX.bSupportPulseGuide">bSupportPulseGuide</a></code></li>
+</ul>
+</li>
+<li>
+<h4><code><a title="pysvb.camera.SVB_CAMERA_UPGRADE_STATUS" href="#pysvb.camera.SVB_CAMERA_UPGRADE_STATUS">SVB_CAMERA_UPGRADE_STATUS</a></code></h4>
+<ul class="">
+<li><code><a title="pysvb.camera.SVB_CAMERA_UPGRADE_STATUS.min_version" href="#pysvb.camera.SVB_CAMERA_UPGRADE_STATUS.min_version">min_version</a></code></li>
+<li><code><a title="pysvb.camera.SVB_CAMERA_UPGRADE_STATUS.needed" href="#pysvb.camera.SVB_CAMERA_UPGRADE_STATUS.needed">needed</a></code></li>
+</ul>
+</li>
+<li>
+<h4><code><a title="pysvb.camera.SVB_CONTROL_CAPS" href="#pysvb.camera.SVB_CONTROL_CAPS">SVB_CONTROL_CAPS</a></code></h4>
+<ul class="two-column">
+<li><code><a title="pysvb.camera.SVB_CONTROL_CAPS.ControlType" href="#pysvb.camera.SVB_CONTROL_CAPS.ControlType">ControlType</a></code></li>
+<li><code><a title="pysvb.camera.SVB_CONTROL_CAPS.DefaultValue" href="#pysvb.camera.SVB_CONTROL_CAPS.DefaultValue">DefaultValue</a></code></li>
+<li><code><a title="pysvb.camera.SVB_CONTROL_CAPS.Description" href="#pysvb.camera.SVB_CONTROL_CAPS.Description">Description</a></code></li>
+<li><code><a title="pysvb.camera.SVB_CONTROL_CAPS.IsAutoSupported" href="#pysvb.camera.SVB_CONTROL_CAPS.IsAutoSupported">IsAutoSupported</a></code></li>
+<li><code><a title="pysvb.camera.SVB_CONTROL_CAPS.IsWritable" href="#pysvb.camera.SVB_CONTROL_CAPS.IsWritable">IsWritable</a></code></li>
+<li><code><a title="pysvb.camera.SVB_CONTROL_CAPS.MaxValue" href="#pysvb.camera.SVB_CONTROL_CAPS.MaxValue">MaxValue</a></code></li>
+<li><code><a title="pysvb.camera.SVB_CONTROL_CAPS.MinValue" href="#pysvb.camera.SVB_CONTROL_CAPS.MinValue">MinValue</a></code></li>
+<li><code><a title="pysvb.camera.SVB_CONTROL_CAPS.Name" href="#pysvb.camera.SVB_CONTROL_CAPS.Name">Name</a></code></li>
+</ul>
+</li>
+<li>
+<h4><code><a title="pysvb.camera.SVB_CONTROL_TYPE" href="#pysvb.camera.SVB_CONTROL_TYPE">SVB_CONTROL_TYPE</a></code></h4>
+<ul class="">
+<li><code><a title="pysvb.camera.SVB_CONTROL_TYPE.SVB_AUTO_TARGET_BRIGHTNESS" href="#pysvb.camera.SVB_CONTROL_TYPE.SVB_AUTO_TARGET_BRIGHTNESS">SVB_AUTO_TARGET_BRIGHTNESS</a></code></li>
+<li><code><a title="pysvb.camera.SVB_CONTROL_TYPE.SVB_BAD_PIXEL_CORRECTION_ENABLE" href="#pysvb.camera.SVB_CONTROL_TYPE.SVB_BAD_PIXEL_CORRECTION_ENABLE">SVB_BAD_PIXEL_CORRECTION_ENABLE</a></code></li>
+<li><code><a title="pysvb.camera.SVB_CONTROL_TYPE.SVB_BLACK_LEVEL" href="#pysvb.camera.SVB_CONTROL_TYPE.SVB_BLACK_LEVEL">SVB_BLACK_LEVEL</a></code></li>
+<li><code><a title="pysvb.camera.SVB_CONTROL_TYPE.SVB_CONTRAST" href="#pysvb.camera.SVB_CONTROL_TYPE.SVB_CONTRAST">SVB_CONTRAST</a></code></li>
+<li><code><a title="pysvb.camera.SVB_CONTROL_TYPE.SVB_COOLER_ENABLE" href="#pysvb.camera.SVB_CONTROL_TYPE.SVB_COOLER_ENABLE">SVB_COOLER_ENABLE</a></code></li>
+<li><code><a title="pysvb.camera.SVB_CONTROL_TYPE.SVB_COOLER_POWER" href="#pysvb.camera.SVB_CONTROL_TYPE.SVB_COOLER_POWER">SVB_COOLER_POWER</a></code></li>
+<li><code><a title="pysvb.camera.SVB_CONTROL_TYPE.SVB_CURRENT_TEMPERATURE" href="#pysvb.camera.SVB_CONTROL_TYPE.SVB_CURRENT_TEMPERATURE">SVB_CURRENT_TEMPERATURE</a></code></li>
+<li><code><a title="pysvb.camera.SVB_CONTROL_TYPE.SVB_EXPOSURE" href="#pysvb.camera.SVB_CONTROL_TYPE.SVB_EXPOSURE">SVB_EXPOSURE</a></code></li>
+<li><code><a title="pysvb.camera.SVB_CONTROL_TYPE.SVB_FLIP" href="#pysvb.camera.SVB_CONTROL_TYPE.SVB_FLIP">SVB_FLIP</a></code></li>
+<li><code><a title="pysvb.camera.SVB_CONTROL_TYPE.SVB_FRAME_SPEED_MODE" href="#pysvb.camera.SVB_CONTROL_TYPE.SVB_FRAME_SPEED_MODE">SVB_FRAME_SPEED_MODE</a></code></li>
+<li><code><a title="pysvb.camera.SVB_CONTROL_TYPE.SVB_GAIN" href="#pysvb.camera.SVB_CONTROL_TYPE.SVB_GAIN">SVB_GAIN</a></code></li>
+<li><code><a title="pysvb.camera.SVB_CONTROL_TYPE.SVB_GAMMA" href="#pysvb.camera.SVB_CONTROL_TYPE.SVB_GAMMA">SVB_GAMMA</a></code></li>
+<li><code><a title="pysvb.camera.SVB_CONTROL_TYPE.SVB_GAMMA_CONTRAST" href="#pysvb.camera.SVB_CONTROL_TYPE.SVB_GAMMA_CONTRAST">SVB_GAMMA_CONTRAST</a></code></li>
+<li><code><a title="pysvb.camera.SVB_CONTROL_TYPE.SVB_SATURATION" href="#pysvb.camera.SVB_CONTROL_TYPE.SVB_SATURATION">SVB_SATURATION</a></code></li>
+<li><code><a title="pysvb.camera.SVB_CONTROL_TYPE.SVB_SHARPNESS" href="#pysvb.camera.SVB_CONTROL_TYPE.SVB_SHARPNESS">SVB_SHARPNESS</a></code></li>
+<li><code><a title="pysvb.camera.SVB_CONTROL_TYPE.SVB_TARGET_TEMPERATURE" href="#pysvb.camera.SVB_CONTROL_TYPE.SVB_TARGET_TEMPERATURE">SVB_TARGET_TEMPERATURE</a></code></li>
+<li><code><a title="pysvb.camera.SVB_CONTROL_TYPE.SVB_WB_B" href="#pysvb.camera.SVB_CONTROL_TYPE.SVB_WB_B">SVB_WB_B</a></code></li>
+<li><code><a title="pysvb.camera.SVB_CONTROL_TYPE.SVB_WB_G" href="#pysvb.camera.SVB_CONTROL_TYPE.SVB_WB_G">SVB_WB_G</a></code></li>
+<li><code><a title="pysvb.camera.SVB_CONTROL_TYPE.SVB_WB_R" href="#pysvb.camera.SVB_CONTROL_TYPE.SVB_WB_R">SVB_WB_R</a></code></li>
+</ul>
+</li>
+<li>
+<h4><code><a title="pysvb.camera.SVB_EXPOSURE_STATUS" href="#pysvb.camera.SVB_EXPOSURE_STATUS">SVB_EXPOSURE_STATUS</a></code></h4>
+<ul class="">
+<li><code><a title="pysvb.camera.SVB_EXPOSURE_STATUS.SVB_EXP_FAILED" href="#pysvb.camera.SVB_EXPOSURE_STATUS.SVB_EXP_FAILED">SVB_EXP_FAILED</a></code></li>
+<li><code><a title="pysvb.camera.SVB_EXPOSURE_STATUS.SVB_EXP_IDLE" href="#pysvb.camera.SVB_EXPOSURE_STATUS.SVB_EXP_IDLE">SVB_EXP_IDLE</a></code></li>
+<li><code><a title="pysvb.camera.SVB_EXPOSURE_STATUS.SVB_EXP_SUCCESS" href="#pysvb.camera.SVB_EXPOSURE_STATUS.SVB_EXP_SUCCESS">SVB_EXP_SUCCESS</a></code></li>
+<li><code><a title="pysvb.camera.SVB_EXPOSURE_STATUS.SVB_EXP_WORKING" href="#pysvb.camera.SVB_EXPOSURE_STATUS.SVB_EXP_WORKING">SVB_EXP_WORKING</a></code></li>
+</ul>
+</li>
+<li>
+<h4><code><a title="pysvb.camera.SVB_FLIP_STATUS" href="#pysvb.camera.SVB_FLIP_STATUS">SVB_FLIP_STATUS</a></code></h4>
+<ul class="">
+<li><code><a title="pysvb.camera.SVB_FLIP_STATUS.SVB_FLIP_BOTH" href="#pysvb.camera.SVB_FLIP_STATUS.SVB_FLIP_BOTH">SVB_FLIP_BOTH</a></code></li>
+<li><code><a title="pysvb.camera.SVB_FLIP_STATUS.SVB_FLIP_HORIZ" href="#pysvb.camera.SVB_FLIP_STATUS.SVB_FLIP_HORIZ">SVB_FLIP_HORIZ</a></code></li>
+<li><code><a title="pysvb.camera.SVB_FLIP_STATUS.SVB_FLIP_NONE" href="#pysvb.camera.SVB_FLIP_STATUS.SVB_FLIP_NONE">SVB_FLIP_NONE</a></code></li>
+<li><code><a title="pysvb.camera.SVB_FLIP_STATUS.SVB_FLIP_VERT" href="#pysvb.camera.SVB_FLIP_STATUS.SVB_FLIP_VERT">SVB_FLIP_VERT</a></code></li>
+</ul>
+</li>
+<li>
+<h4><code><a title="pysvb.camera.SVB_GUIDE_DIRECTION" href="#pysvb.camera.SVB_GUIDE_DIRECTION">SVB_GUIDE_DIRECTION</a></code></h4>
+<ul class="">
+<li><code><a title="pysvb.camera.SVB_GUIDE_DIRECTION.SVB_GUIDE_EAST" href="#pysvb.camera.SVB_GUIDE_DIRECTION.SVB_GUIDE_EAST">SVB_GUIDE_EAST</a></code></li>
+<li><code><a title="pysvb.camera.SVB_GUIDE_DIRECTION.SVB_GUIDE_NORTH" href="#pysvb.camera.SVB_GUIDE_DIRECTION.SVB_GUIDE_NORTH">SVB_GUIDE_NORTH</a></code></li>
+<li><code><a title="pysvb.camera.SVB_GUIDE_DIRECTION.SVB_GUIDE_SOUTH" href="#pysvb.camera.SVB_GUIDE_DIRECTION.SVB_GUIDE_SOUTH">SVB_GUIDE_SOUTH</a></code></li>
+<li><code><a title="pysvb.camera.SVB_GUIDE_DIRECTION.SVB_GUIDE_WEST" href="#pysvb.camera.SVB_GUIDE_DIRECTION.SVB_GUIDE_WEST">SVB_GUIDE_WEST</a></code></li>
+</ul>
+</li>
+<li>
+<h4><code><a title="pysvb.camera.SVB_ID" href="#pysvb.camera.SVB_ID">SVB_ID</a></code></h4>
+<ul class="">
+<li><code><a title="pysvb.camera.SVB_ID.id" href="#pysvb.camera.SVB_ID.id">id</a></code></li>
+</ul>
+</li>
+<li>
+<h4><code><a title="pysvb.camera.SVB_IMG_TYPE" href="#pysvb.camera.SVB_IMG_TYPE">SVB_IMG_TYPE</a></code></h4>
+<ul class="two-column">
+<li><code><a title="pysvb.camera.SVB_IMG_TYPE.SVB_IMG_RAW10" href="#pysvb.camera.SVB_IMG_TYPE.SVB_IMG_RAW10">SVB_IMG_RAW10</a></code></li>
+<li><code><a title="pysvb.camera.SVB_IMG_TYPE.SVB_IMG_RAW12" href="#pysvb.camera.SVB_IMG_TYPE.SVB_IMG_RAW12">SVB_IMG_RAW12</a></code></li>
+<li><code><a title="pysvb.camera.SVB_IMG_TYPE.SVB_IMG_RAW14" href="#pysvb.camera.SVB_IMG_TYPE.SVB_IMG_RAW14">SVB_IMG_RAW14</a></code></li>
+<li><code><a title="pysvb.camera.SVB_IMG_TYPE.SVB_IMG_RAW16" href="#pysvb.camera.SVB_IMG_TYPE.SVB_IMG_RAW16">SVB_IMG_RAW16</a></code></li>
+<li><code><a title="pysvb.camera.SVB_IMG_TYPE.SVB_IMG_RAW8" href="#pysvb.camera.SVB_IMG_TYPE.SVB_IMG_RAW8">SVB_IMG_RAW8</a></code></li>
+<li><code><a title="pysvb.camera.SVB_IMG_TYPE.SVB_IMG_RGB24" href="#pysvb.camera.SVB_IMG_TYPE.SVB_IMG_RGB24">SVB_IMG_RGB24</a></code></li>
+<li><code><a title="pysvb.camera.SVB_IMG_TYPE.SVB_IMG_RGB32" href="#pysvb.camera.SVB_IMG_TYPE.SVB_IMG_RGB32">SVB_IMG_RGB32</a></code></li>
+<li><code><a title="pysvb.camera.SVB_IMG_TYPE.SVB_IMG_Y10" href="#pysvb.camera.SVB_IMG_TYPE.SVB_IMG_Y10">SVB_IMG_Y10</a></code></li>
+<li><code><a title="pysvb.camera.SVB_IMG_TYPE.SVB_IMG_Y12" href="#pysvb.camera.SVB_IMG_TYPE.SVB_IMG_Y12">SVB_IMG_Y12</a></code></li>
+<li><code><a title="pysvb.camera.SVB_IMG_TYPE.SVB_IMG_Y14" href="#pysvb.camera.SVB_IMG_TYPE.SVB_IMG_Y14">SVB_IMG_Y14</a></code></li>
+<li><code><a title="pysvb.camera.SVB_IMG_TYPE.SVB_IMG_Y16" href="#pysvb.camera.SVB_IMG_TYPE.SVB_IMG_Y16">SVB_IMG_Y16</a></code></li>
+<li><code><a title="pysvb.camera.SVB_IMG_TYPE.SVB_IMG_Y8" href="#pysvb.camera.SVB_IMG_TYPE.SVB_IMG_Y8">SVB_IMG_Y8</a></code></li>
+</ul>
+</li>
+<li>
+<h4><code><a title="pysvb.camera.SVB_ROI_FORMAT" href="#pysvb.camera.SVB_ROI_FORMAT">SVB_ROI_FORMAT</a></code></h4>
+<ul class="">
+<li><code><a title="pysvb.camera.SVB_ROI_FORMAT.bin" href="#pysvb.camera.SVB_ROI_FORMAT.bin">bin</a></code></li>
+<li><code><a title="pysvb.camera.SVB_ROI_FORMAT.height" href="#pysvb.camera.SVB_ROI_FORMAT.height">height</a></code></li>
+<li><code><a title="pysvb.camera.SVB_ROI_FORMAT.start_x" href="#pysvb.camera.SVB_ROI_FORMAT.start_x">start_x</a></code></li>
+<li><code><a title="pysvb.camera.SVB_ROI_FORMAT.start_y" href="#pysvb.camera.SVB_ROI_FORMAT.start_y">start_y</a></code></li>
+<li><code><a title="pysvb.camera.SVB_ROI_FORMAT.width" href="#pysvb.camera.SVB_ROI_FORMAT.width">width</a></code></li>
+</ul>
+</li>
+<li>
+<h4><code><a title="pysvb.camera.SVB_SUPPORTED_MODE" href="#pysvb.camera.SVB_SUPPORTED_MODE">SVB_SUPPORTED_MODE</a></code></h4>
+<ul class="">
+<li><code><a title="pysvb.camera.SVB_SUPPORTED_MODE.SupportedCameraMode" href="#pysvb.camera.SVB_SUPPORTED_MODE.SupportedCameraMode">SupportedCameraMode</a></code></li>
+</ul>
+</li>
+<li>
+<h4><code><a title="pysvb.camera.SVB_TRIGGER_OUTPUT_IO_CONF" href="#pysvb.camera.SVB_TRIGGER_OUTPUT_IO_CONF">SVB_TRIGGER_OUTPUT_IO_CONF</a></code></h4>
+<ul class="">
+<li><code><a title="pysvb.camera.SVB_TRIGGER_OUTPUT_IO_CONF.delay" href="#pysvb.camera.SVB_TRIGGER_OUTPUT_IO_CONF.delay">delay</a></code></li>
+<li><code><a title="pysvb.camera.SVB_TRIGGER_OUTPUT_IO_CONF.duration" href="#pysvb.camera.SVB_TRIGGER_OUTPUT_IO_CONF.duration">duration</a></code></li>
+<li><code><a title="pysvb.camera.SVB_TRIGGER_OUTPUT_IO_CONF.pin_high" href="#pysvb.camera.SVB_TRIGGER_OUTPUT_IO_CONF.pin_high">pin_high</a></code></li>
+</ul>
+</li>
+<li>
+<h4><code><a title="pysvb.camera.SVB_TRIG_OUTPUT" href="#pysvb.camera.SVB_TRIG_OUTPUT">SVB_TRIG_OUTPUT</a></code></h4>
+<ul class="">
+<li><code><a title="pysvb.camera.SVB_TRIG_OUTPUT.SVB_TRIG_OUTPUT_NONE" href="#pysvb.camera.SVB_TRIG_OUTPUT.SVB_TRIG_OUTPUT_NONE">SVB_TRIG_OUTPUT_NONE</a></code></li>
+<li><code><a title="pysvb.camera.SVB_TRIG_OUTPUT.SVB_TRIG_OUTPUT_PINA" href="#pysvb.camera.SVB_TRIG_OUTPUT.SVB_TRIG_OUTPUT_PINA">SVB_TRIG_OUTPUT_PINA</a></code></li>
+<li><code><a title="pysvb.camera.SVB_TRIG_OUTPUT.SVB_TRIG_OUTPUT_PINB" href="#pysvb.camera.SVB_TRIG_OUTPUT.SVB_TRIG_OUTPUT_PINB">SVB_TRIG_OUTPUT_PINB</a></code></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</nav>
+</main>
+<footer id="footer">
+<p>Generated by <a href="https://pdoc3.github.io/pdoc" title="pdoc: Python API documentation generator"><cite>pdoc</cite> 0.10.0</a>.</p>
+</footer>
+</body>
+</html>

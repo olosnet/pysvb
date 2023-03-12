@@ -2,6 +2,9 @@
 
 from pysvb.camera import SVB_CAMERA_MODE, PySVBCameraSDK, SVB_ROI_FORMAT
 
+def separator(c="-", l=50):
+    print("\n{}\n".format(c*l))
+
 
 if __name__ == "__main__":
 
@@ -14,7 +17,7 @@ if __name__ == "__main__":
 
     if connected > 0:
         for i in range(0, connected):
-            print("\n---------------------------------------------------\n")
+            separator()
             info = camera_sdk.get_camera_info(i)
             print("Friendly name:", info.FriendlyName)
             print("Port type:", info.PortType)
@@ -22,12 +25,12 @@ if __name__ == "__main__":
             print("Device ID:", hex(info.DeviceID))
             print("Camera ID:", info.CameraID)
             camera_id = info.CameraID
-            print("\n---------------------------------------------------\n")
+            separator()
 
         print("Open latest camera...")
         camera_sdk.open_camera(camera_id)
 
-        print("\n---------------------------------------------------\n")
+        print("\n{}\n".format("-"*50))
         # Camera properties
         props = camera_sdk.get_camera_property(camera_id)
         print("Camera properties:")
@@ -49,7 +52,7 @@ if __name__ == "__main__":
         print("\tsupport control temp:", prop_ex.bSupportControlTemp)
         print("\tsupport pulse guide:", prop_ex.bSupportPulseGuide)
 
-        print("\n---------------------------------------------------\n")
+        separator()
 
         # Controls
         ncontrols = camera_sdk.get_num_of_controls(camera_id)
@@ -61,7 +64,7 @@ if __name__ == "__main__":
             control = camera_sdk.get_control_caps(camera_id, i)
             # Get value
             value, auto = camera_sdk.get_control_value(camera_id, control.ControlType)
-            print("=================================")
+            separator(c="=", l=40)
             print("\ttype:", control.ControlType)
             print("\tname:", control.Name)
             print("\tdescription:", control.Description)
@@ -71,10 +74,9 @@ if __name__ == "__main__":
             print("\tis auto supported:", ('YES' if control.IsAutoSupported else 'NO'))
             print("\tis writable:", ('YES' if control.IsWritable else 'NO'))
             print("\tcurrent value:", value)
-            print("=================================")
+            separator(c="=", l=40)
 
-        print("\n---------------------------------------------------\n")
-
+        separator()
         print("Camera supported modes:\n")
 
         mode = camera_sdk.get_camera_support_mode(camera_id)
@@ -88,7 +90,7 @@ if __name__ == "__main__":
             print("Set camera mode to normal...")
             camera_sdk.set_camera_mode(camera_id, SVB_CAMERA_MODE.SVB_MODE_NORMAL)
 
-        print("\n---------------------------------------------------\n")
+        separator(c="=")
 
         print("Set default ROI format...")
         roi_format = SVB_ROI_FORMAT(0, 0, props.MaxWidth, props.MaxHeight, 1)
@@ -112,7 +114,7 @@ if __name__ == "__main__":
         print("\twidth:", croi_format.width)
         print("\theight:", croi_format.height)
 
-        print("\n---------------------------------------------------\n")
+        separator(c="=")
 
 
         # Disable autosave
